@@ -11,7 +11,7 @@ namespace PcBuilder.Models
         public int CategoryId { get; set; }
 
         [Display(Name = "Nazwa")]
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         public virtual ICollection<Subcategory> Subcategories { get; set; }
     }

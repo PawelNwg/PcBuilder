@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PcBuilder.Models;
+using PcBuilder.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,14 +13,19 @@ namespace PcBuilder.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly RepositoryWrapper _repositoryWrapper;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, RepositoryWrapper repositoryWrapper)
         {
             _logger = logger;
+            _repositoryWrapper = repositoryWrapper;
         }
 
         public IActionResult Index()
         {
+            _repositoryWrapper.BeginTransaction();
+            var kategorie = _repositoryWrapper.RepositoryCategory.GetAll();
+
             return View();
         }
 
