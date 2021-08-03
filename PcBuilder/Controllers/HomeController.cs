@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PcBuilder.Data;
+using PcBuilder.Interfaces;
 using PcBuilder.Models;
 using PcBuilder.Repositories;
 using System;
@@ -13,19 +15,18 @@ namespace PcBuilder.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly RepositoryWrapper _repositoryWrapper;
+        private readonly IRepositoryWrapper _repositoryWrapper;
 
-        public HomeController(ILogger<HomeController> logger, RepositoryWrapper repositoryWrapper)
+        public HomeController(ILogger<HomeController> logger, IRepositoryWrapper repositoryWrapper)
         {
             _logger = logger;
             _repositoryWrapper = repositoryWrapper;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            _repositoryWrapper.BeginTransaction();
-            var kategorie = _repositoryWrapper.RepositoryCategory.GetAll();
-
+            var kategorie = await _repositoryWrapper.RepositoryCategory.GetAll();
+            kategorie.ToList();
             return View();
         }
 

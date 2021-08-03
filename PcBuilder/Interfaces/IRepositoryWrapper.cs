@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PcBuilder.Interfaces
 {
-    internal interface IRepositoryWrapper
+    public interface IRepositoryWrapper
     {
         Task Save();
 
