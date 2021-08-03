@@ -11,14 +11,14 @@ namespace PcBuilder.ViewComponents
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
 
-        private NavigationViewComponent(IRepositoryWrapper repositoryWrapper)
+        public NavigationViewComponent(IRepositoryWrapper repositoryWrapper)
         {
             _repositoryWrapper = repositoryWrapper;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var categories = _repositoryWrapper.RepositoryCategory.GetAll();
+            var categories = await _repositoryWrapper.RepositoryCategory.GetAll();
             return await Task.FromResult((IViewComponentResult)View("Navigation", categories));
         }
     }
