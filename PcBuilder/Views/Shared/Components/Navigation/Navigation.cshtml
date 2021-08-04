@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<PcBuilder.Models.Category>
 
-<div class="col-md-12" style="padding-top:50px;">
-    SIEMA
-</div>
+<ul class="nav flex-column">
+    @foreach (var item in Model)
+    {
+        <li class="nav-item">
+            <a class="nav-link" href="#">@item.Name</a>
+        </li>
+    }
+</ul>
