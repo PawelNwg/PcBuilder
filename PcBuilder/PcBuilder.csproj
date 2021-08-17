@@ -6,6 +6,82 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\content\Images\ajax-loader.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\content\Images\ajax-loader.png" />
+    <None Include="wwwroot\content\Images\baner.png" />
+    <None Include="wwwroot\content\Images\bestseller.png" />
+    <None Include="wwwroot\content\Images\dommaly.png" />
+    <None Include="wwwroot\content\Images\footer-cd.png" />
+    <None Include="wwwroot\content\Images\icons-18-black.png" />
+    <None Include="wwwroot\content\Images\icons-18-white.png" />
+    <None Include="wwwroot\content\Images\icons-36-black.png" />
+    <None Include="wwwroot\content\Images\icons-36-white.png" />
+    <None Include="wwwroot\content\Images\koszyk-details.png" />
+    <None Include="wwwroot\content\Images\koszyk.png" />
+    <None Include="wwwroot\content\Images\koszyk_white.png" />
+    <None Include="wwwroot\content\Images\logo.png" />
+    <None Include="wwwroot\content\Images\new.png" />
+    <None Include="wwwroot\content\Images\searchlogo.png" />
+    <None Include="wwwroot\content\Images\upload.png" />
+    <None Include="wwwroot\content\Kategorie\aspnet.png" />
+    <None Include="wwwroot\content\Kategorie\csharp.png" />
+    <None Include="wwwroot\content\Kategorie\css.png" />
+    <None Include="wwwroot\content\Kategorie\html.png" />
+    <None Include="wwwroot\content\Kategorie\javascript.png" />
+    <None Include="wwwroot\content\Kategorie\jquery.png" />
+    <None Include="wwwroot\content\Kategorie\xml.png" />
+    <None Include="wwwroot\content\Kursy\obrazekaspnet.png" />
+    <None Include="wwwroot\content\Kursy\obrazekcsharp.png" />
+    <None Include="wwwroot\content\Kursy\obrazekcss.png" />
+    <None Include="wwwroot\content\Kursy\obrazekhtml.png" />
+    <None Include="wwwroot\content\Kursy\obrazekjavascript.png" />
+    <None Include="wwwroot\content\Kursy\obrazekjquery.png" />
+    <None Include="wwwroot\content\Kursy\obrazekmvc.png" />
+    <None Include="wwwroot\content\Kursy\obrazekmvc2.png" />
+    <None Include="wwwroot\content\Kursy\obrazekxml.png" />
+    <None Include="wwwroot\content\themes\base\accordion.css" />
+    <None Include="wwwroot\content\themes\base\all.css" />
+    <None Include="wwwroot\content\themes\base\autocomplete.css" />
+    <None Include="wwwroot\content\themes\base\base.css" />
+    <None Include="wwwroot\content\themes\base\button.css" />
+    <None Include="wwwroot\content\themes\base\core.css" />
+    <None Include="wwwroot\content\themes\base\datepicker.css" />
+    <None Include="wwwroot\content\themes\base\dialog.css" />
+    <None Include="wwwroot\content\themes\base\draggable.css" />
+    <None Include="wwwroot\content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <None Include="wwwroot\content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <None Include="wwwroot\content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <None Include="wwwroot\content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <None Include="wwwroot\content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <None Include="wwwroot\content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <None Include="wwwroot\content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <None Include="wwwroot\content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <None Include="wwwroot\content\themes\base\images\ui-icons_222222_256x240.png" />
+    <None Include="wwwroot\content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <None Include="wwwroot\content\themes\base\images\ui-icons_454545_256x240.png" />
+    <None Include="wwwroot\content\themes\base\images\ui-icons_888888_256x240.png" />
+    <None Include="wwwroot\content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <None Include="wwwroot\content\themes\base\menu.css" />
+    <None Include="wwwroot\content\themes\base\progressbar.css" />
+    <None Include="wwwroot\content\themes\base\resizable.css" />
+    <None Include="wwwroot\content\themes\base\selectable.css" />
+    <None Include="wwwroot\content\themes\base\selectmenu.css" />
+    <None Include="wwwroot\content\themes\base\slider.css" />
+    <None Include="wwwroot\content\themes\base\sortable.css" />
+    <None Include="wwwroot\content\themes\base\spinner.css" />
+    <None Include="wwwroot\content\themes\base\tabs.css" />
+    <None Include="wwwroot\content\themes\base\theme.css" />
+    <None Include="wwwroot\content\themes\base\tooltip.css" />
+    <None Include="wwwroot\css\Prototype.css" />
+    <None Include="wwwroot\css\SiteTemp.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.8" />
@@ -16,5 +92,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.3" />
   </ItemGroup>
 </Project>

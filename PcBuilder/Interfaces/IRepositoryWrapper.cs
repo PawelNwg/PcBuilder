@@ -13,5 +13,6 @@ namespace PcBuilder.Interfaces
         Task<IDbContextTransaction> BeginTransaction();
 
         IRepositoryCategory RepositoryCategory { get; }
+        IRepositoryProduct RepositoryProduct { get; }
     }
 }

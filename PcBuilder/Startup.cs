@@ -13,6 +13,7 @@ using PcBuilder.Interfaces;
 using PcBuilder.Models;
 using PcBuilder.Repositories;
 using PcBuilder.Services;
+using PcBuilder.Services.ImageToBlobStorage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,9 +41,11 @@ namespace PcBuilder
             services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews();           
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<IImageService, ImageService>();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

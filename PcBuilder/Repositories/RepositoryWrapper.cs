@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 using PcBuilder.Data;
 using PcBuilder.Interfaces;
+using PcBuilder.Services.ImageToBlobStorage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace PcBuilder.Repositories
     {
         private readonly ApplicationDbContext _context;
         private IRepositoryCategory repositoryDatabase;
+        private readonly IImageService _imageService;
 
         public IRepositoryCategory RepositoryCategory
         {
@@ -23,9 +25,22 @@ namespace PcBuilder.Repositories
             }
         }
 
-        public RepositoryWrapper(ApplicationDbContext context)
+        private IRepositoryProduct repositoryProductDatabase;
+
+        public IRepositoryProduct RepositoryProduct
+        {
+            get
+            {
+                if (repositoryProductDatabase == null)
+                    repositoryProductDatabase = new RepositoryProduct(_context, _imageService);
+                return repositoryProductDatabase;
+            }
+        }
+
+        public RepositoryWrapper(ApplicationDbContext context, IImageService imageService)
         {
             _context = context;
+            _imageService = imageService;
         }
 
         public async Task<IDbContextTransaction> BeginTransaction()

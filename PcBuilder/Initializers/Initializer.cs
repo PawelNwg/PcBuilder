@@ -12,7 +12,11 @@ namespace PcBuilder.Initializers
     {
         public static async Task InitializeData(ApplicationDbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
-            context.Database.EnsureCreated();
+            if (!context.Database.EnsureCreated())
+            {
+                return;
+            }
+            
 
             var role = new IdentityRole();
             role.Name = "Admin";
@@ -48,6 +52,49 @@ namespace PcBuilder.Initializers
             pass = "Haslo1234%";
 
             await userManager.CreateAsync(secondUser, pass);
+
+            var categories = new List<Category>()
+            {
+                new Category(){Name = "Pamięć" },
+                new Category(){Name = "GPU" },
+                new Category(){Name = "Obudowy" },
+                new Category(){Name = "RAM" },
+                new Category(){Name = "Płyty główne" },
+                new Category(){Name = "CPU" },
+                new Category(){Name = "Zasialcze" },
+                new Category(){Name = "Chłodzenie" },
+            };
+
+            categories.ForEach(c => context.Categories.Add(c));
+            context.SaveChanges();
+
+            var sub = new Subcategory() {Name = "legacy gpu", CategoryId = 2 };
+            context.Subcategories.Add(sub);
+            context.SaveChanges();
+
+            var gpu = new List<Product>()
+            {
+                new Product()
+                {
+                Name = "GTX 960",
+                Price = 499,
+                Description = "Wydajna karta graficzna o ogromnej mocy",
+                Quantity = 10,
+                SubCategoryId = 1,
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\568d7ce1-deba-4341-8a9b-08152333924e.jpeg"
+                },
+                new Product()
+                {
+                Name = "GTX 961",
+                Price = 299,
+                Description = "Wydajna karta graficzna o ogromnej mocy",
+                Quantity = 10,
+                SubCategoryId = 1,
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\568d7ce1-deba-4341-8a9b-08152333924e.jpeg"
+                }
+            };
+
+            gpu.ForEach(c => context.Products.Add(c));
             context.SaveChanges();
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -27,6 +28,8 @@ namespace PcBuilder.Models
         public int Quantity { get; set; }
 
         public int SubCategoryId { get; set; }
+
+        public string File { get; set; }
 
         public virtual ICollection<Sale> Sales { get; set; }
         public virtual Offer Offer { get; set; }

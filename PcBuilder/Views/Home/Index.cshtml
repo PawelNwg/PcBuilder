@@ -1,8 +1,88 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model IEnumerable<PcBuilder.Models.Product>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link href="../css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <div style="overflow: hidden;">
+            <a id="koszykHeaderLink" href="link">
+                Koszyk (0)
+                <span></span>
+            </a>
+        </div>
+    </header>
+
+    <section>
+        <ul class="KursyTrzyKolumny duzaListaKursy">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <article>
+                        <a class="dodajDoKoszykaLink" href="link">
+                            <img src="~/content/Images/koszyk.png" />
+                        </a>
+                        <a class="kursSzczegolyLink" href="link">
+                            <div class="bestsellerFlag"></div>
+                            <img class="kurs" src="data:image/jpeg;base64, @item.File" />
+                            <h1>
+                                @item.Name
+                            </h1>
+                        </a>
+                    </article>
+                </li>
+            }
+        </ul>
+    </section>
+
+    @*<section>
+            <ul class="KursyTrzyKolumny duzaListaKursy">
+                <li>
+                    <article>
+                        <a class="dodajDoKoszykaLink" href="link">
+                            <img src="../Content/Images/koszyk.png" />
+                        </a>
+                        <a class="kursSzczegolyLink" href="link">
+                            <div class="newFlag"></div>
+                            <img class="kurs" src="../Content/Kursy/obrazekaspnet.png" />
+                            <h1>
+                                Tutaj będzie tytuł
+                            </h1>
+                        </a>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <a class="dodajDoKoszykaLink" href="link">
+                            <img src="../Content/Images/koszyk.png" />
+                        </a>
+                        <a class="kursSzczegolyLink" href="link">
+                            <div class="newFlag"></div>
+                            <img class="kurs" src="../Content/Kursy/obrazekcsharp.png" />
+                            <h1>
+                                Tutaj będzie tytuł
+                            </h1>
+                        </a>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <a class="dodajDoKoszykaLink" href="link">
+                            <img src="../Content/Images/koszyk.png" />
+                        </a>
+                        <a class="kursSzczegolyLink" href="link">
+                            <div class="newFlag"></div>
+                            <img class="kurs" src="../Content/Kursy/obrazekmvc.png" />
+                            <h1>
+                                Tutaj będzie tytuł
+                            </h1>
+                        </a>
+                    </article>
+                </li>
+            </ul>
+        </section>*@
+</body>

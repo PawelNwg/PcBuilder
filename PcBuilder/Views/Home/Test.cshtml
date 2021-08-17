@@ -1,0 +1,8 @@
+﻿@model testcostam
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" asp-for="file" />
+    <button type="submit">zatwierdz </button>
+</form>
+
+<img src="data:image/jpg;base64, @ViewBag.photo" alt="Alternate Text" />
