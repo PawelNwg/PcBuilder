@@ -35,7 +35,7 @@ namespace PcBuilder.Services.ImageToBlobStorage
             string fileName = Guid.NewGuid() + extension;
             IImageEncoder encoder = extension switch
             {
-                ".jpg" => new JpegEncoder(),
+                ".jpeg" => new JpegEncoder(),
                 ".bmp" => new BmpEncoder(),
                 ".gif" => new GifEncoder(),
                 _ => new PngEncoder()
@@ -49,7 +49,7 @@ namespace PcBuilder.Services.ImageToBlobStorage
                     image.Mutate(x => x.Resize(300, 300));
                     //await image.SaveAsync(filePath, encoder);
                     //await stream.WriteAsync(image.Sa);
-                    image.Save(stream, encoder);
+                    await image.SaveAsync(stream, encoder);
                 }
             }
             return filePath;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
+using PcBuilder.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace PcBuilder.Interfaces
 
         IRepositoryCategory RepositoryCategory { get; }
         IRepositoryProduct RepositoryProduct { get; }
+        IRepositorySubCategory RepositorySubcategory { get; }
     }
 }

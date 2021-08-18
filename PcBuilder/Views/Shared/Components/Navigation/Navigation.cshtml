@@ -4,7 +4,7 @@
     @foreach (var item in Model)
     {
         <li class="nav-item">
-            <a class="nav-link" href="#">@item.Name</a>
+            <a class="nav-link" asp-controller="Product" asp-action="SelectedProductList" asp-route-id="@item.CategoryId">@item.Name</a>
         </li>
     }
 </ul>

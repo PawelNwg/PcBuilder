@@ -37,6 +37,18 @@ namespace PcBuilder.Repositories
             }
         }
 
+        private IRepositorySubCategory repositorySubCategory;
+
+        public IRepositorySubCategory RepositorySubcategory
+        {
+            get
+            {
+                if (repositorySubCategory == null)
+                    repositorySubCategory = new RepositorySubcategory(_context);
+                return repositorySubCategory;
+            }
+        }
+
         public RepositoryWrapper(ApplicationDbContext context, IImageService imageService)
         {
             _context = context;

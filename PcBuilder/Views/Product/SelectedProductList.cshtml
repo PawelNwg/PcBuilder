@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PcBuilder.Models.Product>
+
+<head>
+    <title>@ViewData["Title"]</title>
+    <link href="../css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <div style="overflow: hidden;">
+            <a id="koszykHeaderLink" href="link">
+                Koszyk (0)
+                <span></span>
+            </a>
+        </div>
+    </header>
+
+    <section>
+        <ul class="KursyTrzyKolumny duzaListaKursy">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <article>
+                        <a class="dodajDoKoszykaLink" href="link">
+                            <img src="~/content/Images/koszyk.png" />
+                        </a>
+                        <a class="kursSzczegolyLink" href="">
+                            <div class="bestsellerFlag"></div>
+                            <img class="kurs" src="data:image/jpeg;base64, @item.File" />
+                            <h1>
+                                @item.Name
+                            </h1>
+                        </a>
+                    </article>
+                </li>
+            }
+        </ul>
+    </section>
+</body>
