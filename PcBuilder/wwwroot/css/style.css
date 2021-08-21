@@ -38,7 +38,7 @@ body {
         #KursPrawa #KursNazwa > h1 {
             margin-top: 20px;
             font-family: 'Segoe UI Light';
-            font-size: 38px;
+            font-size: 20px !important;
             text-transform: uppercase;
             font-weight: normal;
             color: #39312d;
@@ -48,7 +48,7 @@ body {
         #KursPrawa #KursNazwa > h2 {
             margin-top: 15px;
             margin-bottom: 20px;
-            font-size: 20px;
+            font-size: 20px !important;
             font-family: 'Segoe UI Light';
             text-transform: uppercase;
             font-weight: normal;
@@ -119,6 +119,7 @@ ul.KursyTrzyKolumny {
             -o-transition: all 1s ease;
             -moz-transition: all 1s ease;
             transition: all 1s ease;
+            font-size: 20px !important;
         }
 
         ul.KursyTrzyKolumny li a:hover h1 {

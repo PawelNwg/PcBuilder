@@ -1,10 +1,38 @@
 ﻿@model IEnumerable<PcBuilder.Models.Category>
+<head>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<div class="sidebar">
+    <div class="logo_content">
+        <div class="logo">
+            <i class='bx bx-desktop'></i>
+            <div class="logo_name">PcBuilder</div>
+        </div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
 
-<ul class="nav flex-column">
-    @foreach (var item in Model)
-    {
-        <li class="nav-item">
-            <a class="nav-link" asp-controller="Product" asp-action="SelectedProductList" asp-route-id="@item.CategoryId">@item.Name</a>
+    <ul class="nav flex-column">
+        <li>
+            <i class='bx bx-search'></i>
+            <input type="text" placeholder="Szukaj" />
         </li>
-    }
-</ul>
+        @foreach (var item in Model)
+        {
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Product" asp-action="SelectedProductList" asp-route-id="@item.CategoryId">@item.Name</a>
+            </li>
+        }
+    </ul>
+    <div class="profile_content">
+        <div class="profile">
+            <div class="profile_details">
+                <i class='bx bxs-user-circle'></i>
+                <div class="name_job">
+                    <div class="name">Paweł</div>
+                    <div class="job">Creator</div>
+                </div>
+            </div>
+            <i class='bx bx-log-out' id="log_out"></i>
+        </div>
+    </div>
+</div>
