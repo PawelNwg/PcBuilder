@@ -60,7 +60,7 @@ namespace PcBuilder.Initializers
                 new Category(){Name = "RAM" },
                 new Category(){Name = "Płyty główne" },
                 new Category(){Name = "CPU" },
-                new Category(){Name = "Zasialcze" },
+                new Category(){Name = "Zasilacze" },
                 new Category(){Name = "Chłodzenie" },
             };
 
@@ -90,7 +90,7 @@ namespace PcBuilder.Initializers
                 Price = 499,
                 Description = "Wydajna karta graficzna o ogromnej mocy",
                 Quantity = 10,
-                SubCategoryId = 2,
+                SubCategoryId = 7,
                 File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\568d7ce1-deba-4341-8a9b-08152333924e.jpeg"
                 },
                 new Product()
@@ -99,7 +99,7 @@ namespace PcBuilder.Initializers
                 Price = 299,
                 Description = "dysk ssd",
                 Quantity = 10,
-                SubCategoryId = 1,
+                SubCategoryId = 8,
                 File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\1cf1494f-f007-48dd-93c4-61ad8a99e8f4.png"
                 },
                 new Product()
@@ -108,7 +108,7 @@ namespace PcBuilder.Initializers
                 Price = 999,
                 Description = "cpu",
                 Quantity = 10,
-                SubCategoryId = 6,
+                SubCategoryId = 3,
                 File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\7c533eea-80de-4fe7-a162-72097c675259.jpg"
                 },
                 new Product()
@@ -117,7 +117,7 @@ namespace PcBuilder.Initializers
                 Price = 599,
                 Description = "motherboard",
                 Quantity = 10,
-                SubCategoryId = 5,
+                SubCategoryId = 4,
                 File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\7ba6432d-ca42-49dd-8d9e-240b85c9004c.png"
                 },
                 new Product()
@@ -126,7 +126,7 @@ namespace PcBuilder.Initializers
                 Price = 399,
                 Description = "zasilacz komputerowy",
                 Quantity = 10,
-                SubCategoryId = 7,
+                SubCategoryId = 2,
                 File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\8f2cca3c-8c49-4164-8d65-5efa1f771d35.png"
                 },
                 new Product()
@@ -135,7 +135,7 @@ namespace PcBuilder.Initializers
                 Price = 199,
                 Description = "obudowa komputerowa",
                 Quantity = 10,
-                SubCategoryId = 3,
+                SubCategoryId = 6,
                 File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\4833ea6e-7a50-4045-bcd5-9095ba5058ac.png"
                 },
                 new Product()
@@ -144,7 +144,7 @@ namespace PcBuilder.Initializers
                 Price = 299,
                 Description = "Pamięć RAM",
                 Quantity = 10,
-                SubCategoryId = 4,
+                SubCategoryId = 5,
                 File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\c2dc28f0-9545-4828-b530-f36478fb1bfe.jpg"
                 },
                 new Product()
@@ -153,7 +153,7 @@ namespace PcBuilder.Initializers
                 Price = 299,
                 Description = "chłodzenie",
                 Quantity = 10,
-                SubCategoryId = 8,
+                SubCategoryId = 1,
                 File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\391b6b0e-2fb1-4d6a-8354-63e68498cd2d.png"
                 },
             };

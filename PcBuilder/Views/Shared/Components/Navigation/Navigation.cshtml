@@ -16,8 +16,38 @@
             <i class='bx bx-search'></i>
             <input type="text" placeholder="Szukaj" />
         </li>
+
         @foreach (var item in Model)
         {
+            @switch (item.CategoryId)
+            {
+                case 1:
+                    <i class="flaticon-hdd-1 icon"></i>
+                    break;
+                case 2:
+                    <i class="flaticon-gpu icon"></i>
+                    break;
+                case 3:
+                    <i class="flaticon-pc-tower icon"></i>
+                    break;
+                case 4:
+                    <i class="flaticon-memory icon"></i>
+                    break;
+                case 5:
+                    <i class="flaticon-motherboard icon"></i>
+                    break;
+                case 6:
+                    <i class="flaticon-cpu icon"></i>
+                    break;
+                case 7:
+                    <i class="flaticon-power-supply icon"></i>
+                    break;
+                case 8:
+                    <i class="flaticon-fan icon"></i>
+                    break;
+                default:
+                    break;
+            }
             <li class="nav-item">
                 <a class="nav-link" asp-controller="Product" asp-action="SelectedProductList" asp-route-id="@item.CategoryId">@item.Name</a>
             </li>
@@ -36,3 +66,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+    let searchBtn = document.querySelector(".bx-search");
+
+    btn.onclick = function () {
+        sidebar.classList.toggle("active");
+    }
+
+    searchBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+    }
+</script>
