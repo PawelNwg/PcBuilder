@@ -32,15 +32,6 @@
     <None Include="wwwroot\content\Kategorie\javascript.png" />
     <None Include="wwwroot\content\Kategorie\jquery.png" />
     <None Include="wwwroot\content\Kategorie\xml.png" />
-    <None Include="wwwroot\content\Kursy\obrazekaspnet.png" />
-    <None Include="wwwroot\content\Kursy\obrazekcsharp.png" />
-    <None Include="wwwroot\content\Kursy\obrazekcss.png" />
-    <None Include="wwwroot\content\Kursy\obrazekhtml.png" />
-    <None Include="wwwroot\content\Kursy\obrazekjavascript.png" />
-    <None Include="wwwroot\content\Kursy\obrazekjquery.png" />
-    <None Include="wwwroot\content\Kursy\obrazekmvc.png" />
-    <None Include="wwwroot\content\Kursy\obrazekmvc2.png" />
-    <None Include="wwwroot\content\Kursy\obrazekxml.png" />
     <None Include="wwwroot\content\themes\base\accordion.css" />
     <None Include="wwwroot\content\themes\base\all.css" />
     <None Include="wwwroot\content\themes\base\autocomplete.css" />

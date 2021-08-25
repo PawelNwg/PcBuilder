@@ -1,0 +1,108 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+   
+}
+ul {
+    list-style-type: none;
+}
+
+body {
+}
+
+.card {
+    position: relative;
+    width: 250px;
+    height: 300px;
+    background: #11101d;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 0 !important;
+    border: none;
+}
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        width: 100%;
+        height: 100%;
+        background: #2196f3;
+        transform: skewY(345deg);
+        transition: 0.5s ease;
+        z-index: 1;
+    }
+
+    .card:hover::before {
+        top: -70%;
+        transform: skewY(390deg);
+    }
+
+    .card::after {
+        position: absolute;
+        bottom:0;
+        left:0;
+    }
+
+    .card .imgProduct {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+        .card .imgProduct img {
+            z-index: 9999;
+            width: 200px;
+            height: 200px;
+            transition: all 1s ease;
+            max-width: 100%;
+            transform: translateY(5%);
+        }
+
+    .card:hover .imgProduct img {
+        transform: translateY(0);
+    }
+
+    .card .content {
+        color: #fff;
+        z-index: 9999;
+        text-align: center;
+        margin-top: 10%;
+        transition: 0.5s ease;
+    }
+    .card .content h2{
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+        .card .content h3{
+            font-size: 20px;
+        }
+
+        .card .content a {
+            position: relative;
+            text-decoration: none;
+            padding: 10px 30px;
+            background: #2196f3;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.5s ease;
+            color: #fff;
+            font-size: 10px;
+            opacity: 0;
+        }
+
+            .card:hover .content a{
+                top: 0;
+                opacity: 1;
+            }
+
+
+            .card:hover .content{
+                margin-top: 0px;
+                opacity: 1;
+            }
