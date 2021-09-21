@@ -27,8 +27,14 @@ namespace PcBuilder.Controllers
             var subcategory = await _repositoryWrapper.RepositorySubcategory.GetByCondition(a => a.CategoryId == id);
 
             var selectedProducts = await _repositoryWrapper.RepositoryProduct.GetByCondition(p => p.SubCategoryId == subcategory[0].SubcategoryId);
-
+                
             return View(selectedProducts);
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var selectedProduct = await _repositoryWrapper.RepositoryProduct.GetById(id);
+            return View(selectedProduct);
         }
     }
 }

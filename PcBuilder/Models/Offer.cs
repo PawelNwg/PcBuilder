@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PcBuilder.Models
 {
+    [Serializable]
     public class Offer
     {
         public int OfferId { get; set; }

@@ -6,7 +6,6 @@ body {
     min-height: 100% !important;
 }
 
-
 #koszykHeaderLink {
     width: 143px;
     height: 42px;
@@ -30,4 +29,12 @@ body {
 
 li {
     margin: 5px;
+}
+
+.details {
+    padding: 0px !important;
+    background: none !important;
+    text-decoration: none;
+    border-radius: 0px;
+    position: relative;
 }

@@ -1,0 +1,36 @@
+﻿@model PcBuilder.Models.Product
+
+<section class="row mt-5">
+
+    <div class="col-6">
+        <img src="data:image/jpeg;base64, @Model.File" />
+    </div>
+    <div class="col-6">
+
+        <h5>@Model.Name</h5>
+        <p class="mb-2 text-muted text-uppercase small">@Model.SubCategoryId</p>
+        <p><span class="mr-1"><strong>@Model.Price</strong></span></p>
+        <p class="pt-1">
+            @Model.Description
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
+            error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
+            officia quis dolore quos sapiente tempore alias.
+        </p>
+        <div class="table-responsive">
+            <table class="table table-sm table-borderless mb-0">
+                <tbody>
+                    <tr>
+                        <th class="pl-0 w-25" scope="row"><strong>Model</strong></th>
+                        <td>@Model.Name</td>
+                    </tr>
+                    <tr>
+                        <th class="pl-0 w-25" scope="row"><strong>Dostępna ilość</strong></th>
+                        <td>@Model.Quantity</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <button asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" type="button" class="btn btn-primary btn-md mr-1 mb-2">Dodaj do koszyka</button>
+    </div>
+</section>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PcBuilder.Models
 {
+    [Serializable]
     public class Subcategory
     {
         public int SubcategoryId { get; set; }

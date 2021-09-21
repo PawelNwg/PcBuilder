@@ -18,32 +18,20 @@
         <ul class="row">
             @foreach (var item in Model)
             {
-                <li>
-                    <div class="card col">
-                        <div class="imgProduct">
-                            <img src="data:image/jpeg;base64, @item.File" />
+                <a asp-controller="Product" asp-action="Details" asp-route-id="@item.ProductId" class="details">
+                    <li>
+                        <div class="card col">
+                            <div class="imgProduct">
+                                <img src="data:image/jpeg;base64, @item.File" />
+                            </div>
+                            <div class="content">
+                                <h3>@item.Name</h3>
+                                <h2>@item.Price</h2>
+                                <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.ProductId" class="buy">Dodaj do koszyka</a>
+                            </div>
                         </div>
-                        <div class="content">
-                            <h3>@item.Name</h3>
-                            <h2>@item.Price</h2>
-                            <a href="#" class="buy">Dodaj do koszyka</a>
-                        </div>
-                    </div>
-                </li>
-
-                @*<li>
-                        <article>
-                            <a class="dodajDoKoszykaLink" href="link">
-                                <img src="~/content/Images/koszyk.png" />
-                            </a>
-                            <a class="kursSzczegolyLink" href="">
-                                <div class="bestsellerFlag"></div>
-
-                                <h1>
-                                </h1>
-                            </a>
-                        </article>
-                    </li>*@
+                    </li>
+                </a>
             }
         </ul>
     </section>

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>aspnet-PcBuilder-01A4F7E9-795E-4CBC-84C4-45DCDBBB38F3</UserSecretsId>
+    <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,13 +26,6 @@
     <None Include="wwwroot\content\Images\new.png" />
     <None Include="wwwroot\content\Images\searchlogo.png" />
     <None Include="wwwroot\content\Images\upload.png" />
-    <None Include="wwwroot\content\Kategorie\aspnet.png" />
-    <None Include="wwwroot\content\Kategorie\csharp.png" />
-    <None Include="wwwroot\content\Kategorie\css.png" />
-    <None Include="wwwroot\content\Kategorie\html.png" />
-    <None Include="wwwroot\content\Kategorie\javascript.png" />
-    <None Include="wwwroot\content\Kategorie\jquery.png" />
-    <None Include="wwwroot\content\Kategorie\xml.png" />
     <None Include="wwwroot\content\themes\base\accordion.css" />
     <None Include="wwwroot\content\themes\base\all.css" />
     <None Include="wwwroot\content\themes\base\autocomplete.css" />
@@ -76,6 +70,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.8">
       <PrivateAssets>all</PrivateAssets>

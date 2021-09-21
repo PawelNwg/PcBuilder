@@ -10,6 +10,13 @@ ul {
 body {
 }
 
+.details {
+    padding: 0px !important;
+    background: none !important;
+    text-decoration: none;
+    border-radius: 0px;
+    position: relative;
+}
 .card {
     position: relative;
     width: 250px;

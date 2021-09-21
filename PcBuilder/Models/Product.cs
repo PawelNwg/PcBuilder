@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace PcBuilder.Models
 {
+    [Serializable]
     public class Product
     {
         public int ProductId { get; set; }

@@ -29,7 +29,9 @@ namespace PcBuilder.Repositories
 
         public async Task<Product> GetById(int id)
         {
-            return await FindByCondition(w => w.ProductId == id).FirstOrDefaultAsync();
+            var list = await FindByCondition(w => w.ProductId == id).FirstOrDefaultAsync();
+            list.File = imageService.GetImage(list.File);
+            return list;
         }
 
         public async Task<List<Product>> GetByCategory(int subcategory)
