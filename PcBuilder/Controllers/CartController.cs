@@ -36,5 +36,6 @@ namespace PcBuilder.Controllers
             await cartManager.AddToCart(id);
             return RedirectToAction("Index");
         }
+
     }
 }
