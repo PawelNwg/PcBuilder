@@ -28,7 +28,11 @@ namespace PcBuilder.Services.Cart
 
         public List<CartPosition> GetCart()
         {
-            return JsonConvert.DeserializeObject<List<CartPosition>>(Get(Consts.Const.CartSessionKey));
+            if (Get(Consts.Const.CartSessionKey) != null)
+            {
+                return JsonConvert.DeserializeObject<List<CartPosition>>(Get(Consts.Const.CartSessionKey));
+            }
+            return null;
         }
 
         public async Task AddToCart(int productId)
@@ -116,7 +120,10 @@ namespace PcBuilder.Services.Cart
 
         private void AppendCookie(List<CartPosition> cartPositions)
         {
-            _httpContext.HttpContext.Response.Cookies.Append(Consts.Const.CartSessionKey, JsonConvert.SerializeObject(cartPositions));
+            _httpContext.HttpContext.Response.Cookies.Append(
+                Consts.Const.CartSessionKey,
+                JsonConvert.SerializeObject(cartPositions)
+                );
         }
 
         private CartPosition PrepareNewProductToCart(Product productToAdd)
