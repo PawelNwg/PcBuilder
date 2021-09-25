@@ -1,0 +1,35 @@
+﻿@model PcBuilder.Services.Cart.CartViewModel
+<head>
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/Cart.css" rel="stylesheet" />
+</head>
+
+<table>
+    @foreach (var cartPosition in Model.CartPositions)
+    {
+        <tr id="@cartPosition.product.ProductId" class="m-1">
+            <td class="p-1">@cartPosition.product.Name</td>
+            @*zrobic link do produktu*@
+            <td class="p-1">@cartPosition.quantity</td>
+            <td class="p-1">@cartPosition.product.Price zł</td>
+            <td><a class="btn btn-link" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-id="@cartPosition.product.ProductId">Usuń</a></td>
+        </tr>
+    }
+
+    @if (Model.CartPositions.Count == 0)
+    {
+        <tr>
+            <td>Koszyk pusty</td>
+        </tr>
+    }
+</table>
+
+<div>
+    Suma: <span id="totalPrice">@Model.TotalPrice zł</span>
+</div>
+
+<div>
+    <a href="#">Kontynułuj zakupy</a>
+    @if (Model.CartPositions.Count > 0)
+    {<a href="#">Zapłać</a>}
+</div>

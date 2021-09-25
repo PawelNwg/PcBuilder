@@ -14,6 +14,7 @@ using PcBuilder.Interfaces;
 using PcBuilder.Models;
 using PcBuilder.Repositories;
 using PcBuilder.Services;
+using PcBuilder.Services.Cart;
 using PcBuilder.Services.ImageToBlobStorage;
 using System;
 using System.Collections.Generic;
@@ -34,12 +35,16 @@ namespace PcBuilder
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDistributedMemoryCache();
-            services.AddSession(options =>
+            services.AddDistributedMemoryCache(); ;
+            services.Configure<CookiePolicyOptions>(options =>
             {
-                options.IdleTimeout = TimeSpan.FromSeconds(5);
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
+                options.CheckConsentNeeded = context => false;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+            services.Configure<CookieOptions>(options =>
+            {
+                options.Expires = DateTime.Now.AddMinutes(30);
+                options.IsEssential = true;
             });
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
@@ -54,6 +59,7 @@ namespace PcBuilder
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<IImageService, ImageService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<CartManager>();
             services.AddAutoMapper(typeof(Startup));
         }
 
@@ -78,7 +84,6 @@ namespace PcBuilder
 
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

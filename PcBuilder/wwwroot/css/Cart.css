@@ -1,0 +1,8 @@
+﻿body {
+}
+
+a{
+    text-decoration: none;
+    color: red;
+    pointer-events: all;
+}

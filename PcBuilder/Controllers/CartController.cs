@@ -1,41 +1,43 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PcBuilder.Interfaces;
 using PcBuilder.Services.Cart;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace PcBuilder.Controllers
 {
     public class CartController : Controller
     {
-        private CartManager cartManager;
-        private ISessionManager sessionManager { get; set; }
+        private CartManager _cartManager;
 
         private readonly IRepositoryWrapper _repositoryWrapper;
 
         public CartController(IRepositoryWrapper repositoryWrapper, IHttpContextAccessor httpContextAccessor)
         {
             _repositoryWrapper = repositoryWrapper;
-            sessionManager = new SessionManager(httpContextAccessor);
-            cartManager = new CartManager(sessionManager, _repositoryWrapper);
+            _cartManager = new CartManager(_repositoryWrapper, httpContextAccessor);
         }
 
         public IActionResult Index()
         {
-            var cartPosition = cartManager.GetCart();
-            var totalPrice = cartManager.GetCartSum();
-            CartViewModel cartViewModel = new CartViewModel { CartPositions = cartPosition, TotalPrice = totalPrice };
-            return View(cartViewModel);
+            return View();
         }
 
         public async Task<IActionResult> AddToCart(int id)
         {
-            await cartManager.AddToCart(id);
+            await _cartManager.AddToCart(id);
             return RedirectToAction("Index");
         }
 
+        public ActionResult RemoveFromCart(int id)
+        {
+            _cartManager.RemoveFromCart(id);
+            return RedirectToAction("Index");
+        }
     }
 }

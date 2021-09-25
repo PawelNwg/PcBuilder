@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PcBuilder.Interfaces;
 using PcBuilder.Models;
 using System;
@@ -14,126 +16,118 @@ namespace PcBuilder.Services.Cart
     public class CartManager
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-        private ISessionManager _session;
 
-        public CartManager(ISessionManager session, IRepositoryWrapper repositoryWrapper)
+        //private ISessionManager _session;
+        private readonly IHttpContextAccessor _httpContext;
+
+        public CartManager(IRepositoryWrapper repositoryWrapper, IHttpContextAccessor httpContext)
         {
             _repositoryWrapper = repositoryWrapper;
-            _session = session;
+            _httpContext = httpContext;
         }
 
         public List<CartPosition> GetCart()
         {
-            List<CartPosition> cart;
-            if (_session.Get(Consts.Const.CartSessionKey) == null)
-            {
-                cart = new List<CartPosition>();
-            }
-            else
-            {
-                cart = Deserialize<List<CartPosition>>(_session.Get(Consts.Const.CartSessionKey));
-            }
-            return cart;
+            return JsonConvert.DeserializeObject<List<CartPosition>>(Get(Consts.Const.CartSessionKey));
         }
 
         public async Task AddToCart(int productId)
         {
-            var cart = GetCart();
-            var cartPosition = cart.Find(p => p.product.ProductId == productId);
-            if (cartPosition != null)
-                cartPosition.quantity++;
+            var productToAdd = await _repositoryWrapper.RepositoryProduct.GetById(productId);
+            if (productToAdd == null)
+            {
+                throw new Exception();
+            }
+            productToAdd.File = ""; // automapper here
+
+            if (_httpContext.HttpContext.Request.Cookies.ContainsKey(Consts.Const.CartSessionKey))
+            {
+                var cookie = GetCart();
+                if (cookie.Any(p => p.product.ProductId == productId))
+                {
+                    var editedProduct = cookie.Find(p => p.product.ProductId == productId);
+                    editedProduct.quantity++;
+                    editedProduct.sum = GetOnePositionSum(editedProduct);
+                }
+                else
+                {
+                    cookie.Add(PrepareNewProductToCart(productToAdd));
+                }
+                Remove(Consts.Const.CartSessionKey);
+                AppendCookie(cookie);
+            }
             else
             {
-                var productToAdd = await _repositoryWrapper.RepositoryProduct.GetById(productId);
-                if (productToAdd != null)
-                {
-                    var newCartPosition = new CartPosition()
-                    {
-                        product = productToAdd,
-                        quantity = 1,
-                        sum = productToAdd.Price
-                    };
-                    cart.Add(newCartPosition);
-                }
-            }
-            _session.Set(Consts.Const.CartSessionKey, Serialize(cart));
-        }
-
-        private T Deserialize<T>(byte[] param)
-        {
-            using (MemoryStream ms = new MemoryStream(param))
-            {
-                IFormatter br = new BinaryFormatter();
-                return (T)br.Deserialize(ms);
+                List<CartPosition> cartPositions = new List<CartPosition>() { PrepareNewProductToCart(productToAdd) };
+                AppendCookie(cartPositions);
             }
         }
 
-        private byte[] Serialize<T>(T param)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                ms.Position = 0;
-                IFormatter br = new BinaryFormatter();
-                br.Serialize(ms, param);
-                return ms.ToArray();
-            }
-        }
-
-        public int RemoveFromCart(int productId)
+        public async Task RemoveFromCart(int id)
         {
             var cart = GetCart();
-            var cartPosition = cart.Find(x => x.product.ProductId == productId);
+            var cartPosition = cart.Find(x => x.product.ProductId == id);
             if (cartPosition != null)
             {
                 if (cartPosition.quantity > 1)
                 {
                     cartPosition.quantity--;
-                    return cartPosition.quantity;
+                    cartPosition.sum = GetOnePositionSum(cartPosition);
                 }
                 else
                 {
                     cart.Remove(cartPosition);
                 }
             }
-            return 0;
+            Remove(Consts.Const.CartSessionKey);
+            AppendCookie(cart);
         }
 
-        public decimal GetCartSum()
+        public CartViewModel PrepareViewModel()
+        {
+            return new CartViewModel() { CartPositions = GetCart(), TotalPrice = GetCartTotalPrice() };
+        }
+
+        private decimal GetOnePositionSum(CartPosition cartPosition)
+        {
+            return (cartPosition.quantity * cartPosition.product.Price);
+        }
+
+        private decimal GetCartTotalPrice()
         {
             var cart = GetCart();
             return cart.Sum(k => (k.quantity * k.product.Price));
         }
 
-        public int GetCartItemsNumber()
+        private string Get(string key)
         {
-            var cart = GetCart();
-            return cart.Sum(k => k.quantity);
+            return _httpContext.HttpContext.Request.Cookies[key];
         }
 
-        //public Order CreateOrder(Order order, string userId)
-        //{
-        //var cart = GetCart();
-        //order.CreationDate = DateTime.Now;
-        ////order.AppUser = (int)userId;
-        //order.Status = "created";
+        private void Set(string key, string value)
+        {
+            _httpContext.HttpContext.Response.Cookies.Append(key, value);
+        }
 
-        ////_repositoryWrapper.RepositoryProduct.Create(order); make order repository wrapper
+        private void Remove(string key)
+        {
+            _httpContext.HttpContext.Response.Cookies.Delete(key);
+        }
 
-        //foreach (var cartElement in cart)
-        //{
-        //    var cartPosition = new CartPosition()
-        //    {
-        //        sum = cartElement.product.Price,
-        //        quantity = cartElement.quantity,
-        //        product.ProductId = cartElement.product.ProductId
-        //    };
-        //}
-        //return 0;
-        //}
+        private void AppendCookie(List<CartPosition> cartPositions)
+        {
+            _httpContext.HttpContext.Response.Cookies.Append(Consts.Const.CartSessionKey, JsonConvert.SerializeObject(cartPositions));
+        }
 
-        //public void GetEmptyCart()
-        //{
-        //    _session.Set<List<CartPosition>>(Consts.Const.CartSessionKey, Serialize(null));
-        //}
+        private CartPosition PrepareNewProductToCart(Product productToAdd)
+        {
+            var newCartPosition = new CartPosition()
+            {
+                product = productToAdd,
+                quantity = 1,
+                sum = productToAdd.Price
+            };
+            return newCartPosition;
+        }
     }
 }

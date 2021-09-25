@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PcBuilder.Interfaces;
 using PcBuilder.Services.Cart;
 using System;
@@ -11,20 +12,18 @@ namespace PcBuilder.ViewComponents
 {
     public class CartCountViewComponent : ViewComponent
     {
-        private CartManager cartManager;
-        private ISessionManager sessionManager { get; set; }
-
-        private readonly IRepositoryWrapper _repositoryWrapper;
-
-        public CartCountViewComponent(IRepositoryWrapper repositoryWrapper, IHttpContextAccessor httpContextAccessor)
+        public CartCountViewComponent()
         {
-            sessionManager = new SessionManager(httpContextAccessor);
-            cartManager = new CartManager(sessionManager, _repositoryWrapper);
         }
 
         public int GetCartSize()
         {
-            return cartManager.GetCartItemsNumber();
+            if (Request.Cookies.ContainsKey(Consts.Const.CartSessionKey))
+            {
+                var cartPositions = JsonConvert.DeserializeObject<List<CartPosition>>(Request.Cookies[Consts.Const.CartSessionKey]);
+                return cartPositions.Count;
+            }
+            return 0;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
