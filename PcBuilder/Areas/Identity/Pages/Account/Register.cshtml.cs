@@ -46,21 +46,49 @@ namespace PcBuilder.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Email jest wymagany")]
+            [EmailAddress(ErrorMessage = "Zły format adresu email")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "Hasło jest wymagane")]
+            [StringLength(100, ErrorMessage = "{0} musi posiadać minimum {2} znaki.", MinimumLength = 6)]
+            [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$", ErrorMessage = "Hasło musi zawierać małą oraz wielką literę, znak specjalny")]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Hasło")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Potiwerdź hasło")]
+            [Compare("Password", ErrorMessage = "Pola haseł nie są identyczne")]
             public string ConfirmPassword { get; set; }
+
+            [Required(ErrorMessage = "Imię jest wymagane")]
+            [MaxLength(20, ErrorMessage = "Imię może mieć maksymalnie 20 znaków")]
+            [Display(Name = "Imię")]
+            [RegularExpression(@"^([A-Za-zzżźćńółęąśŻŹĆĄŚĘŁÓŃ]+)$", ErrorMessage = "Niepoprawne imię")]
+            public string Name { get; set; }
+
+            [Required(ErrorMessage = "Nazwisko jest wymagane")]
+            [MaxLength(50, ErrorMessage = "Nazwisko może mieć maksymalnie 50 znaków")]
+            [Display(Name = "Nazwisko")]
+            [RegularExpression(@"^([A-Za-zzżźćńółęąśŻŹĆĄŚĘŁÓŃ]+)$", ErrorMessage = "Niepoprawne nazwisko")]
+            public string Surname { get; set; }
+
+            [MaxLength(50, ErrorMessage = "Miasto może mieć maksymalnie 50 znaków")]
+            [Display(Name = "Miasto")]
+            public string City { get; set; }
+
+            [MaxLength(50, ErrorMessage = "Ulica może mieć maksymalnie 50 znaków")]
+            [Display(Name = "Ulica")]
+            public string Street { get; set; }
+
+            [MaxLength(13, ErrorMessage = "Telefon może mieć maksymalnie 13 znaków")]
+            [Display(Name = "Numer Telefonu")]
+            public string Phone { get; set; }
+
+            [Display(Name = "Numer budynku")]
+            public string BuldingNumber { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
