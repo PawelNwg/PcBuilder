@@ -16,8 +16,6 @@ namespace PcBuilder.Services.Cart
     public class CartManager
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
-
-        //private ISessionManager _session;
         private readonly IHttpContextAccessor _httpContext;
 
         public CartManager(IRepositoryWrapper repositoryWrapper, IHttpContextAccessor httpContext)
@@ -106,11 +104,6 @@ namespace PcBuilder.Services.Cart
         private string Get(string key)
         {
             return _httpContext.HttpContext.Request.Cookies[key];
-        }
-
-        private void Set(string key, string value)
-        {
-            _httpContext.HttpContext.Response.Cookies.Append(key, value);
         }
 
         private void Remove(string key)

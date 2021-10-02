@@ -9,5 +9,6 @@ namespace PcBuilder.Consts
     public class Const
     {
         public const string CartSessionKey = "CartSessionKey";
+        public const string ConfiguratorSessionKey = "ConfigurationKey";
     }
 }
