@@ -98,7 +98,11 @@ namespace PcBuilder.Services.Cart
         private decimal GetCartTotalPrice()
         {
             var cart = GetCart();
-            return cart.Sum(k => (k.quantity * k.product.Price));
+            if (cart != null)
+            {
+                return cart.Sum(k => (k.quantity * k.product.Price));
+            }
+            return 0;
         }
 
         private string Get(string key)

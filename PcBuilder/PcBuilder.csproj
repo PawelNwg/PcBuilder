@@ -7,25 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\content\Images\ajax-loader.gif">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="wwwroot\content\Images\ajax-loader.png" />
-    <None Include="wwwroot\content\Images\baner.png" />
-    <None Include="wwwroot\content\Images\bestseller.png" />
-    <None Include="wwwroot\content\Images\dommaly.png" />
-    <None Include="wwwroot\content\Images\footer-cd.png" />
-    <None Include="wwwroot\content\Images\icons-18-black.png" />
-    <None Include="wwwroot\content\Images\icons-18-white.png" />
-    <None Include="wwwroot\content\Images\icons-36-black.png" />
-    <None Include="wwwroot\content\Images\icons-36-white.png" />
-    <None Include="wwwroot\content\Images\koszyk-details.png" />
-    <None Include="wwwroot\content\Images\koszyk.png" />
-    <None Include="wwwroot\content\Images\koszyk_white.png" />
-    <None Include="wwwroot\content\Images\logo.png" />
-    <None Include="wwwroot\content\Images\new.png" />
-    <None Include="wwwroot\content\Images\searchlogo.png" />
-    <None Include="wwwroot\content\Images\upload.png" />
     <None Include="wwwroot\content\themes\base\accordion.css" />
     <None Include="wwwroot\content\themes\base\all.css" />
     <None Include="wwwroot\content\themes\base\autocomplete.css" />
@@ -59,10 +40,6 @@
     <None Include="wwwroot\content\themes\base\tabs.css" />
     <None Include="wwwroot\content\themes\base\theme.css" />
     <None Include="wwwroot\content\themes\base\tooltip.css" />
-    <None Include="wwwroot\css\Prototype.css" />
-    <None Include="wwwroot\css\SiteTemp.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <ItemGroup>

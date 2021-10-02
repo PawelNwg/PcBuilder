@@ -43,11 +43,11 @@ namespace PcBuilder.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "Nieprawidłowy adres email")]
             [EmailAddress]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Nieprawidłowy format hasła")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
