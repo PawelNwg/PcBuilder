@@ -1,8 +1,20 @@
 ﻿body {
 }
 
-a{
+a {
+    color: black;
+}
+
+.trash a {
     text-decoration: none;
     color: red;
     pointer-events: all;
+}
+
+footer a {
+    color: white !important;
+}
+
+hr :last-of-type {
+    margin-bottom: 20px;
 }

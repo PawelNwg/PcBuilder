@@ -13,5 +13,7 @@ namespace PcBuilder.Interfaces
         Task<Subcategory> GetById(int id);
 
         Task<List<Subcategory>> GetByCondition(System.Linq.Expressions.Expression<Func<Subcategory, bool>> expression);
+
+        Task<Subcategory> GetOneByCodition(System.Linq.Expressions.Expression<Func<Subcategory, bool>> expression);
     }
 }

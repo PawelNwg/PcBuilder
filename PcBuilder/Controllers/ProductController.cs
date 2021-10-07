@@ -26,8 +26,8 @@ namespace PcBuilder.Controllers
         {
             var subcategory = await _repositoryWrapper.RepositorySubcategory.GetByCondition(a => a.CategoryId == id);
 
-            var selectedProducts = await _repositoryWrapper.RepositoryProduct.GetByCondition(p => p.SubCategoryId == subcategory[0].SubcategoryId);
-                
+            var selectedProducts = await _repositoryWrapper.RepositoryProduct.GetByCondition(p => p.SubCategoryId == subcategory[0].SubcategoryId); // change
+
             return View(selectedProducts);
         }
 
@@ -36,5 +36,13 @@ namespace PcBuilder.Controllers
             var selectedProduct = await _repositoryWrapper.RepositoryProduct.GetById(id);
             return View(selectedProduct);
         }
+
+        //[HttpPost]
+        //public async Task<ActionResult> AddProduct(Product product)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //    }
+        //}
     }
 }

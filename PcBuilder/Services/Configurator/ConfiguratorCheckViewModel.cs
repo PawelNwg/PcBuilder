@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace PcBuilder.Services.Configurator
 {
-    public class ConfiguratorViewModel
+    public class ConfiguratorCheckViewModel
     {
-        public List<ConfiguratorPosition> ConfiguratorPositions { get; set; }
-        public decimal TotalPrice { get; set; }
+        public List<Category> Categories { get; set; }
+
+        public List<Category> FilledCategories { get; set; }
     }
 }

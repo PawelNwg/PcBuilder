@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+    <Content Remove="wwwroot\js\categoryChecker.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="bundleconfig.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\categoryChecker.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
     <None Include="wwwroot\content\themes\base\accordion.css" />
     <None Include="wwwroot\content\themes\base\all.css" />
     <None Include="wwwroot\content\themes\base\autocomplete.css" />
@@ -40,6 +51,7 @@
     <None Include="wwwroot\content\themes\base\tabs.css" />
     <None Include="wwwroot\content\themes\base\theme.css" />
     <None Include="wwwroot\content\themes\base\tooltip.css" />
+    <None Include="wwwroot\js\categoryChecker.min.js" />
   </ItemGroup>
 
   <ItemGroup>

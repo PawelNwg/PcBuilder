@@ -78,7 +78,9 @@ body {
 }
 
 li {
-    margin: 5px;
+    margin: 3px;
+    list-style: none;
+    list-style-type: none;
 }
 
 .bg-image {
@@ -90,7 +92,7 @@ li {
 
 .login {
     margin-left: 5px;
-    margin-top: 10%;   
+    margin-top: 10%;
 }
 
 .image {
@@ -103,4 +105,8 @@ li {
 
 button {
     background-color: #292482 !important;
+}
+
+.hidden {
+    visibility: hidden;
 }

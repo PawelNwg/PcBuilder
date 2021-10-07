@@ -42,7 +42,11 @@ namespace PcBuilder.Repositories
         public async Task<List<Product>> GetByCondition(Expression<Func<Product, bool>> expression)
         {
             var list = await FindByCondition(expression).ToListAsync();
-            list.ForEach(x => x.File = imageService.GetImage(x.File));
+            foreach (var item in list)
+            {
+                if (item.File != null || item.File != "")
+                    item.File = imageService.GetImage(item.File);
+            }
             return list;
         }
     }

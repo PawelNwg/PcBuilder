@@ -5,6 +5,7 @@ using PcBuilder.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace PcBuilder.Repositories
@@ -23,6 +24,16 @@ namespace PcBuilder.Repositories
         public async Task<List<Category>> GetAll()
         {
             return await FindAll().ToListAsync();
+        }
+
+        public Task<List<Category>> GetByCondition(Expression<Func<Category, bool>> expression)
+        {
+            return FindByCondition(expression).ToListAsync();
+        }
+
+        public async Task<Category> GetOneByCodition(Expression<Func<Category, bool>> expression)
+        {
+            return await FindOneByCondition(expression);
         }
     }
 }

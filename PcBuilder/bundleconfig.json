@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "wwwroot/js/categoryChecker.min.js",
+    "inputFiles": [
+      "wwwroot/js/categoryChecker.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/Cart.min.css",
+    "inputFiles": [
+      "wwwroot/css/Cart.css"
+    ]
+  }
+]

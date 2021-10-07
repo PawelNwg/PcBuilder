@@ -15,6 +15,7 @@ using PcBuilder.Models;
 using PcBuilder.Repositories;
 using PcBuilder.Services;
 using PcBuilder.Services.Cart;
+using PcBuilder.Services.Configurator;
 using PcBuilder.Services.ImageToBlobStorage;
 using System;
 using System.Collections.Generic;
@@ -60,6 +61,7 @@ namespace PcBuilder
             services.AddScoped<IImageService, ImageService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<CartManager>();
+            services.AddScoped<ConfiguratorManager>();
             services.AddAutoMapper(typeof(Startup));
         }
 

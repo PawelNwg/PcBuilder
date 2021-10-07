@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - PcBuilder</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/style.css" />
+    @*<link rel="stylesheet" href="~/css/style.css" />*@
     <link rel="stylesheet" href="~/css/navigation.css" />
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="~/css/flaticon.css">
@@ -30,6 +30,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Podstawowe informacje</a>
                         </li>
+                        <li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Configurator" asp-action="Index">Konfigurator</a>
+                        </li>
                     </ul>
                     <a asp-controller="Cart" asp-action="Index" class="text-dark">
                         Koszyk
@@ -40,7 +43,7 @@
             </div>
         </nav>
     </header>
-    <div class="container-fluid">
+    <div class="container-fluid" style="overflow-y:auto">
         <div class="row mt-3">
             <div class="col-2" style="height: 88vh">
                 @await Component.InvokeAsync("Navigation")

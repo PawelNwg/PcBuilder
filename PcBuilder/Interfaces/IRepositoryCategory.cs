@@ -11,5 +11,9 @@ namespace PcBuilder.Interfaces
         Task<List<Category>> GetAll();
 
         Task<Category> GetById(int id);
+
+        Task<List<Category>> GetByCondition(System.Linq.Expressions.Expression<Func<Category, bool>> expression);
+
+        Task<Category> GetOneByCodition(System.Linq.Expressions.Expression<Func<Category, bool>> expression);
     }
 }

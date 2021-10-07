@@ -30,5 +30,10 @@ namespace PcBuilder.Repositories
         {
             return await FindByCondition(expression).ToListAsync();
         }
+
+        public async Task<Subcategory> GetOneByCodition(Expression<Func<Subcategory, bool>> expression)
+        {
+            return await FindOneByCondition(expression);
+        }
     }
 }

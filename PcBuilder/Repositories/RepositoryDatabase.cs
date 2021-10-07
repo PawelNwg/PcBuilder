@@ -47,6 +47,11 @@ namespace PcBuilder.Repositories
             return _context.Set<T>().Where(expression).AsNoTracking();
         }
 
+        public async Task<T> FindOneByCondition(Expression<Func<T, bool>> expression)
+        {
+            return await _context.Set<T>().FirstOrDefaultAsync(expression);
+        }
+
         public void Update(T entity)
         {
             _context.Update(entity);

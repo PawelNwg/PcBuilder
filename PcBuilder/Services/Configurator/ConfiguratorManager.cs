@@ -43,7 +43,9 @@ namespace PcBuilder.Services.Configurator
                 var cookie = GetConfiguration();
                 if (cookie.Any(p => p.product.ProductId == productId))
                 {
-                    throw new Exception(); // add message that only one item can be added
+                    var editedProduct = cookie.Find(p => p.product.ProductId == productId);
+                    editedProduct.quantity++;
+                    editedProduct.sum = GetOnePositionSum(editedProduct);
                 }
                 else
                 {
@@ -59,7 +61,12 @@ namespace PcBuilder.Services.Configurator
             }
         }
 
-        public async Task RemoveFromCart(int id)
+        private decimal GetOnePositionSum(ConfiguratorPosition configuratorPosition)
+        {
+            return (configuratorPosition.quantity * configuratorPosition.product.Price);
+        }
+
+        public async Task RemoveFromConfigurator(int id)
         {
             var configurator = GetConfiguration();
             var configuratorPosition = configurator.Find(x => x.product.ProductId == id);
@@ -94,21 +101,27 @@ namespace PcBuilder.Services.Configurator
             var newCartPosition = new ConfiguratorPosition()
             {
                 product = productToAdd,
-                category = _repositoryWrapper.RepositoryCategory.GetById(productToAdd.Subcategory.CategoryId).Result,
+                category = _repositoryWrapper.RepositoryCategory.GetOneByCodition(c => c.Subcategories.Any(s => s.SubcategoryId == productToAdd.SubCategoryId)).GetAwaiter().GetResult(),
+                quantity = 1,
                 sum = productToAdd.Price
             };
+
             return newCartPosition;
         }
 
         private decimal GetCartTotalPrice()
         {
             var configuration = GetConfiguration();
-            return configuration.Sum(k => k.product.Price);
+            if (configuration != null)
+            {
+                return configuration.Sum(k => (k.quantity * k.product.Price));
+            }
+            return 0;
         }
 
         public ConfiguratorViewModel PrepareViewModel()
         {
-            return new ConfiguratorViewModel() { CartPositions = GetConfiguration(), TotalPrice = GetCartTotalPrice() };
+            return new ConfiguratorViewModel() { ConfiguratorPositions = GetConfiguration(), TotalPrice = GetCartTotalPrice()};
         }
     }
 }
