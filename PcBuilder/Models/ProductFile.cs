@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PcBuilder.Models
 {
-    public class testcostam
+    public class ProductFile
     {
         public IFormFile file { get; set; }
     }

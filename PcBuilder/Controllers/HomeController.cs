@@ -34,9 +34,9 @@ namespace PcBuilder.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Test(testcostam test)
+        public async Task<IActionResult> Test(ProductFile productFile)
         {
-            var path = await imageService.SaveImage(test.file);
+            var path = await imageService.SaveImage(productFile.file);
             return View();
         }
 
