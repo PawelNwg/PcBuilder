@@ -61,9 +61,9 @@ namespace PcBuilder.Repositories
             Update(product);
         }
 
-        public void SaveProduct()
+        public async Task SaveProduct()
         {
-            Save();
+            await Save();
         }
     }
 }

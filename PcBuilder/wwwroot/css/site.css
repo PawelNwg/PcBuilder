@@ -75,6 +75,7 @@ body {
     font-size: 15px;
     color: white;
     left: 0;
+    z-index: 9999;
 }
 
 li {

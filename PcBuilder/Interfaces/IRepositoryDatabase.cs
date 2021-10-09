@@ -19,5 +19,7 @@ namespace PcBuilder.Interfaces
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
 
         Task<bool> Exists(int id);
+
+        Task Save();
     }
 }

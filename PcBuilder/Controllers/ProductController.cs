@@ -68,10 +68,10 @@ namespace PcBuilder.Controllers
                     File = null,
                     Quantity = 1,
                 };
-                _context.Products.Add(productToAdd);
-                await _context.SaveChangesAsync();
-                //_repositoryWrapper.RepositoryProduct.Add(productToAdd); // doesnt work, _context add is not generic?
-                //_repositoryWrapper.RepositoryProduct.SaveProduct();
+                //_context.Products.Add(productToAdd);
+                //await _context.SaveChangesAsync();
+                _repositoryWrapper.RepositoryProduct.Add(productToAdd); // doesnt work, _context add is not generic?
+                await _repositoryWrapper.RepositoryProduct.SaveProduct();
                 TempData["ProductToUpload"] = productToAdd.ProductId;
                 return RedirectToAction("AddImageToProduct", new { productId = productToAdd.ProductId });
             }
@@ -95,7 +95,7 @@ namespace PcBuilder.Controllers
             {
                 var updatedProduct = _repositoryWrapper.RepositoryProduct.GetById(productFile.productID).Result;
                 updatedProduct.File = path;
-                _context.Products.Update(updatedProduct);                
+                _context.Products.Update(updatedProduct);
             }
             else
             {

@@ -12,20 +12,22 @@ namespace PcBuilder.Repositories
     public class RepositoryDatabase<T> : IRepositoryDatabase<T> where T : class
     {
         private readonly ApplicationDbContext _context;
+        private readonly DbSet<T> table;
 
         public RepositoryDatabase(ApplicationDbContext context)
         {
             _context = context;
+            table = context.Set<T>();
         }
 
         public void Create(T entity)
         {
-            _context.Add(entity);
+            table.Add(entity);
         }
 
         public void Delete(T entity)
         {
-            _context.Remove(entity);
+            table.Remove(entity);
         }
 
         public async Task<bool> Exists(int id)
@@ -52,14 +54,14 @@ namespace PcBuilder.Repositories
             return await _context.Set<T>().FirstOrDefaultAsync(expression);
         }
 
-        public void Update(T entity)
-        {
-            _context.Update(entity);
-        }
-
-        public async void Save()
+        public async Task Save()
         {
             await _context.SaveChangesAsync();
+        }
+
+        public void Update(T entity)
+        {
+            table.Update(entity);
         }
     }
 }

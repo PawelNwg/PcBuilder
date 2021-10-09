@@ -16,7 +16,8 @@ namespace PcBuilder.Models.ViewModels
 
         [Display(Name = "Cena")]
         [Required(ErrorMessage = "Cena jest obowiązkowa")]
-        [Range(1, 99999, ErrorMessage = "Zły format ceny")]
+        [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
+        [Range(1, 99999.99, ErrorMessage = "Zły format ceny")]
         public decimal Price { get; set; }
 
         [Display(Name = "Opis")]

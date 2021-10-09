@@ -19,6 +19,6 @@ namespace PcBuilder.Interfaces
 
         void UpdateProduct(Product product);
 
-        void SaveProduct();
+        Task SaveProduct();
     }
 }
