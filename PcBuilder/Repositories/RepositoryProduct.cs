@@ -29,9 +29,10 @@ namespace PcBuilder.Repositories
 
         public async Task<Product> GetById(int id)
         {
-            var list = await FindByCondition(w => w.ProductId == id).FirstOrDefaultAsync();
-            list.File = imageService.GetImage(list.File);
-            return list;
+            var item = await FindByCondition(w => w.ProductId == id).FirstOrDefaultAsync();
+            if (item != null)
+                item.File = imageService.GetImage(item.File);
+            return item;
         }
 
         public async Task<List<Product>> GetByCategory(int subcategory)
@@ -48,6 +49,21 @@ namespace PcBuilder.Repositories
                     item.File = imageService.GetImage(item.File);
             }
             return list;
+        }
+
+        public void Add(Product product)
+        {
+            Create(product);
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            Update(product);
+        }
+
+        public void SaveProduct()
+        {
+            Save();
         }
     }
 }

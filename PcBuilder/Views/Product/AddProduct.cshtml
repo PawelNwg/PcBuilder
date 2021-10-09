@@ -24,16 +24,23 @@
                 <textarea asp-for="Description" class="form-control h100"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
             <select asp-for="CategoryId" class="form-select" aria-label="Default select example">
-                <option selected>wybierz kategorię</option>
-                @foreach (var category in Model.Categories)
+                <option selected value="0">wybierz kategorię</option>
+                @if (Model.Categories != null)
                 {
-                    <option value="@category.CategoryId"> @category.Name </option>
-                }
+                    @foreach (var category in Model.Categories)
+                    {
+                        <option value="@category.CategoryId"> @category.Name </option>
+                    }}
             </select>
             <div class="form-group">
-                <input type="submit" value="Zatwierdź" class="btn" />
+                <input type="submit" value="Zatwierdź" class="btn btn-dark" />
             </div>
         </form>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

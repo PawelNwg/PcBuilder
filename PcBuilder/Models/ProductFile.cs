@@ -9,5 +9,6 @@ namespace PcBuilder.Models
     public class ProductFile
     {
         public IFormFile file { get; set; }
+        public int productID { get; set; }
     }
 }

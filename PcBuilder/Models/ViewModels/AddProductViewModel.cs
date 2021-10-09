@@ -16,12 +16,15 @@ namespace PcBuilder.Models.ViewModels
 
         [Display(Name = "Cena")]
         [Required(ErrorMessage = "Cena jest obowiązkowa")]
+        [Range(1, 99999, ErrorMessage = "Zły format ceny")]
         public decimal Price { get; set; }
 
         [Display(Name = "Opis")]
         [MaxLength(500, ErrorMessage = "Opis może mieć maksymalnie 500 znaków")]
         public string Description { get; set; }
 
+        [Required(ErrorMessage = "Kategoria jest wymagana")]
+        [Range(1, 99999, ErrorMessage = "Wybierz kategorię")]
         public int CategoryId { get; set; }
 
         public virtual IEnumerable<Category> Categories { get; set; }

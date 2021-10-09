@@ -56,5 +56,10 @@ namespace PcBuilder.Repositories
         {
             _context.Update(entity);
         }
+
+        public async void Save()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

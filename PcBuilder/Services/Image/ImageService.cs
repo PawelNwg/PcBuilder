@@ -26,7 +26,9 @@ namespace PcBuilder.Services.ImageToBlobStorage
 
         public string GetImage(string path)
         {
-            return Convert.ToBase64String(File.ReadAllBytes(path));
+            if (path != null)
+                return Convert.ToBase64String(File.ReadAllBytes(path));
+            return string.Empty;
         }
 
         public async Task<string> SaveImage(IFormFile file)

@@ -14,5 +14,11 @@ namespace PcBuilder.Interfaces
         Task<Product> GetById(int id);
 
         Task<List<Product>> GetByCondition(System.Linq.Expressions.Expression<Func<Product, bool>> expression);
+
+        void Add(Product product);
+
+        void UpdateProduct(Product product);
+
+        void SaveProduct();
     }
 }

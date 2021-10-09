@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PcBuilder.Data;
 using PcBuilder.Interfaces;
 using PcBuilder.Models;
 using PcBuilder.Models.ViewModels;
@@ -15,11 +16,13 @@ namespace PcBuilder.Controllers
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
         private readonly IImageService _imageService;
+        private readonly ApplicationDbContext _context;
 
-        public ProductController(IRepositoryWrapper repositoryWrapper, IImageService imageService)
+        public ProductController(IRepositoryWrapper repositoryWrapper, IImageService imageService, ApplicationDbContext context)
         {
             _repositoryWrapper = repositoryWrapper;
             _imageService = imageService;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -63,26 +66,44 @@ namespace PcBuilder.Controllers
                     Description = product.Description,
                     SubCategoryId = subcategory.SubcategoryId,
                     File = null,
+                    Quantity = 1,
                 };
-                _repositoryWrapper.RepositoryProduct.Create(productToAdd);
-                return RedirectToAction("AddImageToProduct", productToAdd.ProductId);
+                _context.Products.Add(productToAdd);
+                await _context.SaveChangesAsync();
+                //_repositoryWrapper.RepositoryProduct.Add(productToAdd); // doesnt work, _context add is not generic?
+                //_repositoryWrapper.RepositoryProduct.SaveProduct();
+                TempData["ProductToUpload"] = productToAdd.ProductId;
+                return RedirectToAction("AddImageToProduct", new { productId = productToAdd.ProductId });
             }
-            return View();
+
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
-        public async Task<ActionResult> AddImageToProduct()
+        public async Task<ActionResult> AddImageToProduct(string productId = "")
         {
-            return View();
+            //var productIdToAddImage = _repositoryWrapper.RepositoryProduct.GetById(Int32.Parse(productId)).Result;
+            ProductFile productFile = new ProductFile() { productID = Int32.Parse(productId) };
+            return View(productFile);
         }
 
         [HttpPost]
         public async Task<ActionResult> AddImageToProduct(ProductFile productFile)
         {
             var path = await _imageService.SaveImage(productFile.file);
-            //if (productId != 0)
-            //    _repositoryWrapper.RepositoryProduct.GetById();
-            return View();
+            if (productFile.productID != 0)
+            {
+                var updatedProduct = _repositoryWrapper.RepositoryProduct.GetById(productFile.productID).Result;
+                updatedProduct.File = path;
+                _context.Products.Update(updatedProduct);                
+            }
+            else
+            {
+                var updatedProduct = _repositoryWrapper.RepositoryProduct.GetById(productFile.productID).Result;
+                _context.Products.Remove(updatedProduct);
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
