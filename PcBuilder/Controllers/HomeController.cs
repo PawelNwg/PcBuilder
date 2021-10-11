@@ -26,10 +26,15 @@ namespace PcBuilder.Controllers
             this.imageService = imageService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var products = await _repositoryWrapper.RepositoryProduct.GetAll();
-
+            List<Product> products;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                products = await _repositoryWrapper.RepositoryProduct.GetByCondition(p => p.Name.Contains(searchString));
+                return View(products);
+            }
+            products = await _repositoryWrapper.RepositoryProduct.GetAll();
             return View(products);
         }
 

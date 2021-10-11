@@ -15,8 +15,10 @@
 
     <ul class="nav flex-column">
         <li>
-            <i class='bx bx-search'></i>
-            <input type="text" placeholder="Szukaj" />
+            <form asp-controller="Home" asp-action="index" method="get">
+                <i class='bx bx-search'></i>
+                <input type="text" placeholder="Szukaj" name="searchString" />
+            </form>
         </li>
 
         @foreach (var item in Model)
