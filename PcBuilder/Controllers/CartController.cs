@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PcBuilder.Interfaces;
@@ -11,6 +12,7 @@ using System.Web;
 
 namespace PcBuilder.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         private CartManager _cartManager;

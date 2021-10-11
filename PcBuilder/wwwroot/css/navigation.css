@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    z-index: 9999;
 }
 
 a {
@@ -35,7 +36,7 @@ body {
 }
 
 .sidebar.active {
-    width: 260px;
+    width: 250px;
 }
 
     .sidebar .logo_content .logo {
@@ -112,6 +113,7 @@ body {
 
     .sidebar.active ul li input {
         left: 0px;
+        padding-left: 15px;
     }
 
     .sidebar ul li .bx-search {
@@ -121,7 +123,7 @@ body {
         transform: translate(15px, 2px);
         transition: all 0.5s ease;
         left: -15px;
-        z-index: 99;
+        z-index: 9999;
     }
 
 .sidebar.active ul li .bx-search {
@@ -215,6 +217,7 @@ body {
 .profile .profile_details .name {
     font-size: 15px;
     font-weight: 400;
+    color: white;
 }
 
 .profile .profile_details .job {
@@ -230,8 +233,13 @@ body {
     line-height: 50px;
     font-size: 20px;
     border-radius: 12px;
+    color: white;
 }
 
 .sidebar.active .profile_content{
     opacity: 1;
+}
+
+.bx {
+    color: white;
 }

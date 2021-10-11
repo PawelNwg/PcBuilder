@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<PcBuilder.Models.Category>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
 <head>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -12,11 +15,10 @@
         </div>
         <i class='bx bx-menu' id="btn"></i>
     </div>
-
     <ul class="nav flex-column">
         <li>
             <form asp-controller="Home" asp-action="index" method="get">
-                <i class='bx bx-search'></i>
+                @*<i class='bx bx-search'></i>*@
                 <input type="text" placeholder="Szukaj" name="searchString" />
             </form>
         </li>
@@ -62,11 +64,19 @@
             <div class="profile_details">
                 <i class='bx bxs-user-circle'></i>
                 <div class="name_job">
-                    <div class="name">Paweł</div>
-                    <div class="job">Creator</div>
+                    @*<div class="name" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</div>*@
+                    <a class="name" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</a>
+                    @*<div class="job">Creator</div>*@
                 </div>
             </div>
-            <i class='bx bx-log-out' id="log_out"></i>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit">
+                        <i class='bx bx-log-out' id="log_out"></i>
+                    </button>
+                </form>
+            }
         </div>
     </div>
 </div>

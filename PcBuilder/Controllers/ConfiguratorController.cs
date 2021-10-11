@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PcBuilder.Interfaces;
 using PcBuilder.Services.Configurator;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace PcBuilder.Controllers
 {
+    [Authorize]
     public class ConfiguratorController : Controller
     {
         private ConfiguratorManager _configuratorManager;

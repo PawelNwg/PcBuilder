@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PcBuilder.Data;
 using PcBuilder.Interfaces;
@@ -46,6 +47,7 @@ namespace PcBuilder.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult AddProduct()
         {
             var categories = _repositoryWrapper.RepositoryCategory.GetAll().Result;
@@ -54,6 +56,7 @@ namespace PcBuilder.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult> AddProduct(AddProductViewModel product)
         {
             if (ModelState.IsValid && product != null)
@@ -80,6 +83,7 @@ namespace PcBuilder.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult> AddImageToProduct(string productId = "")
         {
             //var productIdToAddImage = _repositoryWrapper.RepositoryProduct.GetById(Int32.Parse(productId)).Result;
@@ -87,7 +91,9 @@ namespace PcBuilder.Controllers
             return View(productFile);
         }
 
+
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult> AddImageToProduct(ProductFile productFile)
         {
             var path = await _imageService.SaveImage(productFile.file);
