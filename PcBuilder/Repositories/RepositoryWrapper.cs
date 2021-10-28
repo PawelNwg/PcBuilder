@@ -49,6 +49,18 @@ namespace PcBuilder.Repositories
             }
         }
 
+        private IRepositoryDetailedDataProduct repositoryDetailedDataProduct;
+
+        public IRepositoryDetailedDataProduct RepositoryDetailedDataProduct
+        {
+            get
+            {
+                if (repositoryDetailedDataProduct == null)
+                    repositoryDetailedDataProduct = new RepositoryDetailedDataProduct(_context);
+                return repositoryDetailedDataProduct;
+            }
+        }
+
         public RepositoryWrapper(ApplicationDbContext context, IImageService imageService)
         {
             _context = context;

@@ -49,5 +49,10 @@ namespace PcBuilder.Controllers
 
             return View(selectedProducts);
         }
+
+        public async Task<IActionResult> ValidateConfiguration()
+        {
+            return View();
+        }
     }
 }

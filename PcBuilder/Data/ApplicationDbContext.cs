@@ -8,7 +8,7 @@ using System.Text;
 
 namespace PcBuilder.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -38,5 +38,6 @@ namespace PcBuilder.Data
         public virtual DbSet<Subcategory> Subcategories { get; set; }
         public virtual DbSet<UserOffer> UserOffers { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
+        public virtual DbSet<DetailedDataProduct> DetailedDataProducts { get; set; }
     }
 }

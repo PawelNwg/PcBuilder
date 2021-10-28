@@ -35,5 +35,6 @@ namespace PcBuilder.Models
         public virtual ICollection<Sale> Sales { get; set; }
         public virtual Offer Offer { get; set; }
         public virtual Subcategory Subcategory { get; set; }
+        public virtual ICollection<DetailedDataProduct> DetailedDataProducts { get; set; }
     }
 }

@@ -1,0 +1,18 @@
+﻿@model List<string>
+
+<h1>Następujące komponenty posiadają niezgodność</h1>
+
+<ul class="list-group">
+    @if (Model.Count > 0)
+    {
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item w-75">@item</li>
+        }
+    }
+    else
+    {
+        <li class="list-group-item">Gratulacje Twój zestaw jest świetnie dobrany</li>
+    }
+</ul>
+<a class="nav-link text-dark" asp-area="" asp-controller="Configurator" asp-action="Index"><button class="btn-primary btn-block m-1 w-75">Powrót do konfiguratora</button></a>

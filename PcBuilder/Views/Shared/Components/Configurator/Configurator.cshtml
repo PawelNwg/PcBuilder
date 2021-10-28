@@ -75,7 +75,8 @@
                         </li>
                     </ul>
 
-                    <button type="button" class="btn btn-primary btn-block">Zapłać</button>
+                    <a asp-controller="Configurator" asp-action="ValidateConfiguration"><button class="btn btn-primary btn-block m-1">Waliduj zestaw</button></a>
+                    <button type="button" class="btn btn-primary btn-block m-1">Zapłać</button>
                     @await Component.InvokeAsync("ConfiguratorCheck")
                 </div>
             </div>

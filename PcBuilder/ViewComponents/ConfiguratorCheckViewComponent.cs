@@ -25,7 +25,11 @@ namespace PcBuilder.ViewComponents
             List<Category> filledCategories = new List<Category>();
             var configuration = _configuratorManager.GetConfiguration();
             if (configuration == null) return new List<Category>();
-            configuration.ForEach(p => filledCategories.Add(p.category));
+            foreach (var conf in configuration)
+            {
+                if (!filledCategories.Any(x => x.CategoryId == conf.category.CategoryId))
+                    filledCategories.Add(conf.category);
+            }
             return filledCategories.Distinct().ToList();
         }
 

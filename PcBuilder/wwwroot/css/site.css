@@ -111,3 +111,9 @@ button {
 .hidden {
     visibility: hidden;
 }
+
+#bootstrap-overrides row {
+    margin: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}

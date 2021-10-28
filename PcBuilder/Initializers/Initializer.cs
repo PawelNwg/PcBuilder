@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using PcBuilder.Data;
 using PcBuilder.Models;
 using System;
@@ -159,6 +160,38 @@ namespace PcBuilder.Initializers
             };
 
             products.ForEach(c => context.Products.Add(c));
+            context.SaveChanges();
+
+            var details = new List<DetailedDataProduct>()
+            {
+                new DetailedDataProduct { ProductId = 1, Name = "Length", Value = "280" , Product = products.Where(x => x.ProductId == 1).FirstOrDefault()}, // COOLING
+
+                new DetailedDataProduct { ProductId = 2, Name = "ClockSpeed", Value = "3200" , Product = products.Where(x => x.ProductId == 2).FirstOrDefault()}, //RAM
+                new DetailedDataProduct { ProductId = 2, Name = "RamStandard", Value = "DDR4" , Product = products.Where(x => x.ProductId == 2).FirstOrDefault()},
+
+                new DetailedDataProduct { ProductId = 3, Name = "MaxGpuLenght", Value = "360", Product = products.Where(x => x.ProductId == 3).FirstOrDefault() }, // CASE
+                new DetailedDataProduct { ProductId = 3, Name = "MaxCoolingHeight", Value = "170", Product = products.Where(x => x.ProductId == 3).FirstOrDefault() },
+                new DetailedDataProduct { ProductId = 3, Name = "MotherBoardStandard", Value = "ATX" , Product = products.Where(x => x.ProductId == 3).FirstOrDefault()},
+
+                new DetailedDataProduct { ProductId = 4, Name = "MaxPower", Value = "600", Product = products.Where(x => x.ProductId == 4).FirstOrDefault() }, // PSU
+
+                new DetailedDataProduct { ProductId = 5, Name = "SATA", Value = "3" , Product = products.Where(x => x.ProductId == 5).FirstOrDefault() }, //MOTHERBOARD
+                new DetailedDataProduct { ProductId = 5, Name = "MotherBoardStandard", Value = "ATX", Product = products.Where(x => x.ProductId == 5).FirstOrDefault() },
+                new DetailedDataProduct { ProductId = 5, Name = "RamStandard", Value = "DDR4", Product = products.Where(x => x.ProductId == 5).FirstOrDefault()},
+                new DetailedDataProduct { ProductId = 5, Name = "ClockSpeed", Value = "3200;2600;2200;2400", Product = products.Where(x => x.ProductId == 5).FirstOrDefault() },
+
+                new DetailedDataProduct { ProductId = 6, Name = "ClockSpeed", Value = "3200" , Product = products.Where(x => x.ProductId == 6).FirstOrDefault()}, //CPU
+                new DetailedDataProduct { ProductId = 6, Name = "Efficiency", Value = "5", Product = products.Where(x => x.ProductId == 6).FirstOrDefault() }, // 1 - 5
+                new DetailedDataProduct { ProductId = 6, Name = "PowerNeeded", Value = "125" , Product = products.Where(x => x.ProductId == 6).FirstOrDefault()},
+
+                new DetailedDataProduct { ProductId = 7, Name = "SATA", Value = "3", Product = products.Where(x => x.ProductId == 7).FirstOrDefault() }, //MEMORY
+
+                new DetailedDataProduct { ProductId = 8, Name = "Length", Value = "300" , Product = products.Where(x => x.ProductId == 8).FirstOrDefault()}, //GPU
+                new DetailedDataProduct { ProductId = 8, Name = "PowerNeeded", Value = "350" , Product = products.Where(x => x.ProductId == 8).FirstOrDefault()},
+                new DetailedDataProduct { ProductId = 8, Name = "Efficiency", Value = "2" , Product = products.Where(x => x.ProductId == 8).FirstOrDefault()},
+            };
+
+            details.ForEach(s => context.DetailedDataProducts.Add(s));
             context.SaveChanges();
         }
     }
