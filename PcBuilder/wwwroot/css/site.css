@@ -112,8 +112,12 @@ button {
     visibility: hidden;
 }
 
-#bootstrap-overrides row {
-    margin: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+.borderCss {
+    border: 5px solid black;
+    border-radius: 15px;
+    width: 83%;
+}
+
+.mleft {
+    margin-left: 50%;
 }
