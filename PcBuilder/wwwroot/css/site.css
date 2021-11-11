@@ -113,9 +113,10 @@ button {
 }
 
 .borderCss {
-    border: 5px solid black;
-    border-radius: 15px;
     width: 83%;
+    border-radius: 39px;
+    background: #292482;
+    box-shadow: 6px 6px 12px #28237f, -6px -6px 12px #2a2585;
 }
 
 .mleft {

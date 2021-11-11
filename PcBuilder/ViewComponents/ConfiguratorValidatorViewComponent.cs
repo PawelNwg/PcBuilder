@@ -57,6 +57,51 @@ namespace PcBuilder.ViewComponents
                 if (detailedDataProduct is not null)
                     components.Add(new Component() { Product = item.product, Category = item.category, DetailedDataProduct = detailedDataProduct });
             }
+            List<Category> categories = _repositoryWrapper.RepositoryCategory.GetAll().Result;
+            List<Category> categoriesInConfiguration = new List<Category>();
+            _configuration.ForEach(x => categoriesInConfiguration.Add(x.category));
+            categoriesInConfiguration.ForEach(y => categories.RemoveAll(x => x.Name == y.Name));
+
+            foreach (var category in categories)
+            {
+                switch (category)
+                {
+                    case { Name: MEMORY }:
+                        _validatorMessages.Add($"W konfiguracji brakuje karty pamięci masowej");
+                        break;
+
+                    case { Name: GPU }:
+                        _validatorMessages.Add($"W konfiguracji brakuje karty graficznej");
+                        break;
+
+                    case { Name: CASE }:
+                        _validatorMessages.Add($"W konfiguracji brakuje obudowy");
+                        break;
+
+                    case { Name: RAM }:
+                        _validatorMessages.Add($"W konfiguracji brakuje pamięci RAM");
+                        break;
+
+                    case { Name: MOTHERBOARD }:
+                        _validatorMessages.Add($"W konfiguracji brakuje płyty głównej");
+                        break;
+
+                    case { Name: CPU }:
+                        _validatorMessages.Add($"W konfiguracji brakuje procesora");
+                        break;
+
+                    case { Name: PSU }:
+                        _validatorMessages.Add($"W konfiguracji brakuje zasilacza");
+                        break;
+
+                    case { Name: COOLING }:
+                        _validatorMessages.Add($"W konfiguracji brakuje chłodzenia");
+                        break;
+
+                    default:
+                        break;
+                }
+            }
 
             foreach (var configuratorPosition in _configuration)
             {
@@ -87,7 +132,6 @@ namespace PcBuilder.ViewComponents
                         break;
 
                     case { Name: PSU }:
-
                         break;
 
                     case { Name: COOLING }:
@@ -104,25 +148,52 @@ namespace PcBuilder.ViewComponents
         private bool ValidateCpu()
         {
             var cpu = components?.Where(x => x.Category.Name == CPU).FirstOrDefault();
-            var cpuPowerNeeded = Int16.Parse(cpu?.DetailedDataProduct.Where(x => x.Name == "PowerNeeded").FirstOrDefault().Value);
+            var cpuPowerNeeded = Int16.Parse(cpu?.DetailedDataProduct?.Where(x => x.Name == "PowerNeeded").FirstOrDefault().Value);
+            var cpuFamily = cpu?.DetailedDataProduct?.Where(x => x.Name == "CpuFamily").FirstOrDefault().Value;
 
-            if (ValidateCpuPowerNeeded(cpuPowerNeeded))
+            var isCpuPowerNeededOK = ValidateCpuPowerNeeded(cpuPowerNeeded);
+            var isCpuFamilyOK = ValidateCpuFamily(cpuFamily);
+            if (isCpuPowerNeededOK && isCpuFamilyOK)
                 return true;
             return false;
         }
 
+        private bool ValidateCpuFamily(string cpuFamily)
+        {
+            var supportedCpuFamilies = components.Where(x => x.Category?.Name == MOTHERBOARD).FirstOrDefault().DetailedDataProduct?.Where(x => x.Name == "SupportedCpuFamilies").FirstOrDefault().Value;
+
+            if (supportedCpuFamilies is null)
+            {
+                _validatorMessages.Add($"Może wystąpić problem zgodności procesora z płytą główną");
+                return false;
+            }
+
+            List<string> supportedCpuFamiliesList = supportedCpuFamilies.Split(new char[] { ';' }).ToList();
+
+            if (!supportedCpuFamilies.Contains(cpuFamily))
+            {
+                _validatorMessages.Add($"Może wystąpić problem zgodności procesora z płytą główną");
+                return false;
+            }
+
+            return true;
+        }
+
         private bool ValidateCpuPowerNeeded(int cpuPowerNeeded)
         {
-            var powersupplyValue = components.Where(x => x.Category.Name == PSU).FirstOrDefault().DetailedDataProduct.Where(x => x.Name == "MaxPower").FirstOrDefault().Value;
+            var powersupplyValue = components?.Where(x => x.Category?.Name == PSU).FirstOrDefault().DetailedDataProduct?.Where(x => x?.Name == "MaxPower").FirstOrDefault().Value;
 
             if (powersupplyValue is null)
-                _validatorMessages.Add($"Procesor nie będzie działać bez zasilacza");
+            {
+                //_validatorMessages.Add($"Procesor nie będzie działać bez zasilacza");
+                return false;
+            }
 
             var powersupplyPowerInt = Int16.Parse(powersupplyValue);
 
             if (powersupplyPowerInt < cpuPowerNeeded)
             {
-                _validatorMessages.Add($"Procesor potrzebuje większego zasilacza");
+                _validatorMessages.Add($"Komputer potrzebuje większego zasilacza");
                 return false;
             }
 
@@ -135,8 +206,8 @@ namespace PcBuilder.ViewComponents
 
         private bool ValidatePcCase()
         {
-            var pccase = components?.Where(x => x.Category.Name == CASE).FirstOrDefault();
-            var pccaseMotherBoardStandard = pccase?.DetailedDataProduct.Where(x => x.Name == "MotherBoardStandard").FirstOrDefault().Value;
+            var pccase = components?.Where(x => x.Category?.Name == CASE).FirstOrDefault();
+            var pccaseMotherBoardStandard = pccase?.DetailedDataProduct?.Where(x => x?.Name == "MotherBoardStandard").FirstOrDefault().Value;
 
             if (ValidateMotherBoardStandard(pccaseMotherBoardStandard))
                 return true;
@@ -145,8 +216,14 @@ namespace PcBuilder.ViewComponents
 
         private bool ValidateMotherBoardStandard(string pccaseMotherBoardStandard)
         {
-            var motherboardStandard = components?.Where(x => x.Category.Name == MOTHERBOARD).FirstOrDefault();
-            var motherboardStandardValue = motherboardStandard?.DetailedDataProduct.Where(x => x.Name == "MotherBoardStandard").FirstOrDefault().Value;
+            var motherboardStandard = components?.Where(x => x.Category?.Name == MOTHERBOARD).FirstOrDefault();
+            if (motherboardStandard.Value.Category is null)
+            {
+                //_validatorMessages.Add($"W konfiguracji brakuje płyty głównej");
+                return false;
+            }
+
+            var motherboardStandardValue = motherboardStandard?.DetailedDataProduct?.Where(x => x?.Name == "MotherBoardStandard").FirstOrDefault().Value;
 
             if (pccaseMotherBoardStandard != motherboardStandardValue)
             {
@@ -159,7 +236,9 @@ namespace PcBuilder.ViewComponents
         private bool ValidateCooling()
         {
             var cooling = components?.Where(x => x.Category.Name == COOLING).FirstOrDefault();
-            var coolingLenght = Int16.Parse(cooling?.DetailedDataProduct.Where(x => x.Name == "Length").FirstOrDefault().Value);
+            if (cooling is null)
+                return false;
+            var coolingLenght = Int16.Parse(cooling?.DetailedDataProduct?.Where(x => x?.Name == "Length").FirstOrDefault().Value);
 
             if (ValidateCoolingLength(coolingLenght))
                 return true;
@@ -169,7 +248,12 @@ namespace PcBuilder.ViewComponents
         private bool ValidateCoolingLength(int coolingLenght)
         {
             var pccase = components?.Where(x => x.Category.Name == CASE).FirstOrDefault();
-            var pccaseMaxCoolingHeight = Int16.Parse(pccase?.DetailedDataProduct.Where(x => x.Name == "MaxCoolingHeight").FirstOrDefault().Value);
+            if (pccase is null)
+            {
+                //_validatorMessages.Add($"W zestawie brakuje obudowy");
+                return false;
+            }
+            var pccaseMaxCoolingHeight = Int16.Parse(pccase?.DetailedDataProduct?.Where(x => x.Name == "MaxCoolingHeight").FirstOrDefault().Value);
 
             if (coolingLenght > pccaseMaxCoolingHeight)
             {
@@ -179,26 +263,30 @@ namespace PcBuilder.ViewComponents
             return true;
         }
 
-        private bool ValidateMemory()
+        //private bool ValidateMemory()
+        //{
+        //    var memory = components?.Where(x => x.Category.Name == MEMORY).FirstOrDefault();
+        //    var memorySata = memory?.DetailedDataProduct.Where(x => x.Name == "SATA").FirstOrDefault().Value;
+
+        //    if (ValidateMemorySata(memorySata))
+        //        return true;
+        //    return false;
+        //}
+
+        //private bool ValidateMemorySata(string memorySata)
+        //{
+        //    var motherboardSata = components.Where(x => x.Category.Name == MOTHERBOARD).FirstOrDefault().DetailedDataProduct.Where(x => x.Name == "SATA").FirstOrDefault().Value;
+
+        //    if (memorySata != motherboardSata)
+        //    {
+        //        _validatorMessages.Add($"Standary SATA dysku oraz płyty glównej różnią się");
+        //        return false;
+        //    }
+        //    return true;
+        //}
+
+        private void ValidateMemory()
         {
-            var memory = components?.Where(x => x.Category.Name == MEMORY).FirstOrDefault();
-            var memorySata = memory?.DetailedDataProduct.Where(x => x.Name == "SATA").FirstOrDefault().Value;
-
-            if (ValidateMemorySata(memorySata))
-                return true;
-            return false;
-        }
-
-        private bool ValidateMemorySata(string memorySata)
-        {
-            var motherboardSata = components.Where(x => x.Category.Name == MOTHERBOARD).FirstOrDefault().DetailedDataProduct.Where(x => x.Name == "SATA").FirstOrDefault().Value;
-
-            if (memorySata != motherboardSata)
-            {
-                _validatorMessages.Add($"Standary SATA dysku oraz płyty glównej różnią się");
-                return false;
-            }
-            return true;
         }
 
         private bool ValidateRAM()
@@ -207,19 +295,25 @@ namespace PcBuilder.ViewComponents
             var ramClockSpeed = ram.DetailedDataProduct.Where(x => x.Name == "ClockSpeed").FirstOrDefault().Value;
             var ramStandard = ram.DetailedDataProduct.Where(x => x.Name == "RamStandard").FirstOrDefault().Value;
 
-            if (
-            ValidateRamClockSpeed(ramClockSpeed) &&
-            ValidateRamStandard(ramStandard))
+            var isRamClockOk = ValidateRamClockSpeed(ramClockSpeed);
+            var isRamStandardOk = ValidateRamStandard(ramStandard);
+
+            if (isRamClockOk
+            &&
+            isRamStandardOk)
                 return true;
             return false;
         }
 
         private bool ValidateRamStandard(string ramStandard)
         {
-            var motherboardRamStandardValue = components.Where(x => x.Category.Name == MOTHERBOARD).FirstOrDefault().DetailedDataProduct.Where(x => x.Name == "RamStandard").FirstOrDefault().Value;
+            var motherboardRamStandardValue = components?.Where(x => x.Category?.Name == MOTHERBOARD).FirstOrDefault().DetailedDataProduct?.Where(x => x?.Name == "RamStandard").FirstOrDefault().Value;
 
             if (motherboardRamStandardValue is null)
+            {
                 _validatorMessages.Add($"Pamięć RAM wymaga płyty głównej");
+                return false;
+            }
 
             if (ramStandard != motherboardRamStandardValue)
             {
@@ -232,10 +326,13 @@ namespace PcBuilder.ViewComponents
 
         private bool ValidateRamClockSpeed(string clockSpeed)
         {
-            var motherboardRamClockSpeedValue = components.Where(x => x.Category.Name == MOTHERBOARD).FirstOrDefault().DetailedDataProduct.Where(x => x.Name == "ClockSpeed").FirstOrDefault().Value;
-            List<string> compatibileClockSpeeds = motherboardRamClockSpeedValue.Split(new char[] { ';' }).ToList();
+            var motherboardRamClockSpeedValue = components?.Where(x => x.Category?.Name == MOTHERBOARD).FirstOrDefault().DetailedDataProduct?.Where(x => x?.Name == "ClockSpeed").FirstOrDefault().Value;
             if (motherboardRamClockSpeedValue is null)
+            {
                 _validatorMessages.Add($"Pamięć RAM wymaga płyty głównej");
+                return false;
+            }
+            List<string> compatibileClockSpeeds = motherboardRamClockSpeedValue.Split(new char[] { ';' }).ToList();
 
             if (!compatibileClockSpeeds.Contains(clockSpeed))
             {
@@ -264,30 +361,35 @@ namespace PcBuilder.ViewComponents
 
         private bool ValidateGPU()
         {
-            var gpu = components.Where(x => x.Category.Name == GPU).FirstOrDefault();
-            var gpuLength = Int16.Parse(gpu.DetailedDataProduct.Where(x => x.Name == "Length").FirstOrDefault().Value);
-            var gpuEfficiency = Int16.Parse(gpu.DetailedDataProduct.Where(x => x.Name == "Efficiency").FirstOrDefault().Value);
-            var gpuPowerNeeded = Int16.Parse(gpu.DetailedDataProduct.Where(x => x.Name == "PowerNeeded").FirstOrDefault().Value);
-            if (
-            ValidateGPUsLength(gpuLength) &&
-            ValidateGPUsEfficiency(gpuEfficiency) &&
-            ValidateGPUsPowerNeeded(gpuPowerNeeded))
+            var gpu = components.Where(x => x.Category?.Name == GPU).FirstOrDefault();
+            var gpuLength = Int16.Parse(gpu.DetailedDataProduct?.Where(x => x?.Name == "Length").FirstOrDefault().Value);
+            var gpuEfficiency = Int16.Parse(gpu.DetailedDataProduct?.Where(x => x?.Name == "Efficiency").FirstOrDefault().Value);
+            var gpuPowerNeeded = Int16.Parse(gpu.DetailedDataProduct.Where(x => x?.Name == "PowerNeeded").FirstOrDefault().Value);
+
+            var isGPUsLengthOk = ValidateGPUsLength(gpuLength);
+            var isGPUsEfficiencyOk = ValidateGPUsEfficiency(gpuEfficiency);
+            var isGPUsPowerNeededOk = ValidateGPUsPowerNeeded(gpuPowerNeeded);
+
+            if (isGPUsLengthOk && isGPUsEfficiencyOk && isGPUsPowerNeededOk)            
                 return true;
             return false;
         }
 
         private bool ValidateGPUsPowerNeeded(int gpuPowerNeeded)
         {
-            var powersupplyValue = components.Where(x => x.Category.Name == PSU).FirstOrDefault().DetailedDataProduct.Where(x => x.Name == "MaxPower").FirstOrDefault().Value;
+            var powersupplyValue = components?.Where(x => x.Category?.Name == PSU).FirstOrDefault().DetailedDataProduct?.Where(x => x?.Name == "MaxPower").FirstOrDefault().Value;
 
             if (powersupplyValue is null)
+            {
                 _validatorMessages.Add($"Karta graficzna nie będzie działać bez zasilacza");
+                return false;
+            }
 
             var powersupplyPowerInt = Int16.Parse(powersupplyValue);
 
             if (powersupplyPowerInt < gpuPowerNeeded)
             {
-                _validatorMessages.Add($"Karta graficzna potrzebuje większego zasilacza");
+                _validatorMessages.Add($"Komputer potrzebuje większego zasilacza");
                 return false;
             }
 
@@ -296,10 +398,13 @@ namespace PcBuilder.ViewComponents
 
         private bool ValidateGPUsEfficiency(int gpuEfficiency)
         {
-            var cpuValue = components.Where(x => x.Category.Name == CPU).FirstOrDefault().DetailedDataProduct.Where(x => x.Name == "Efficiency").FirstOrDefault().Value;
+            var cpuValue = components?.Where(x => x.Category?.Name == CPU).FirstOrDefault().DetailedDataProduct?.Where(x => x?.Name == "Efficiency").FirstOrDefault().Value;
 
             if (cpuValue is null)
+            {
                 _validatorMessages.Add($"Karta graficzna nie będzie działać bez procesora");
+                return false;
+            }
 
             var cpuValueInt = Int16.Parse(cpuValue);
 
@@ -320,10 +425,13 @@ namespace PcBuilder.ViewComponents
 
         private bool ValidateGPUsLength(int gpuLength)
         {
-            var pccaseValue = components.Where(x => x.Category.Name == CASE).FirstOrDefault().DetailedDataProduct.Where(x => x.Name == "MaxGpuLenght").FirstOrDefault().Value;
+            var pccaseValue = components?.Where(x => x.Category?.Name == CASE).FirstOrDefault().DetailedDataProduct?.Where(x => x?.Name == "MaxGpuLenght").FirstOrDefault().Value;
 
             if (pccaseValue is null)
+            {
                 _validatorMessages.Add($"Karta graficzna potrzebuje obudowy");
+                return false;
+            }
 
             var pccaseInt = Int16.Parse(pccaseValue);
 
