@@ -1,0 +1,70 @@
+﻿@model IEnumerable<PcBuilder.Models.AppUser>
+
+<div class="container">
+    <table class="table" id="userTable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Street)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BuldingNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ZipCode)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => user.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => user.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => user.Surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => user.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => user.Street)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => user.BuldingNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => user.ZipCode)
+                    </td>
+                    <td>
+                        @if (user.LockoutEnabled == true && user.LockoutEnd > DateTime.Now)
+                        {
+                            <a class="btn btn-primary" asp-action="UnblockUser" asp-route-id="@user.Id">Odblokuj</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-primary" asp-action="BlockUser" asp-route-id="@user.Id">Zablokuj</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

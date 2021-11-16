@@ -272,7 +272,7 @@ namespace PcBuilder.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("Value")
@@ -539,8 +539,7 @@ namespace PcBuilder.Migrations
                     b.HasOne("PcBuilder.Models.Product", "Product")
                         .WithMany("DetailedDataProducts")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Product");
                 });
@@ -550,7 +549,7 @@ namespace PcBuilder.Migrations
                     b.HasOne("PcBuilder.Models.AppUser", "AppUser")
                         .WithMany("Orders")
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("AppUser");
                 });
@@ -560,13 +559,13 @@ namespace PcBuilder.Migrations
                     b.HasOne("PcBuilder.Models.Offer", "Offer")
                         .WithMany("OrdersOffers")
                         .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("PcBuilder.Models.Order", "Order")
                         .WithMany("OrdersOffers")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Offer");
@@ -579,12 +578,12 @@ namespace PcBuilder.Migrations
                     b.HasOne("PcBuilder.Models.Offer", "Offer")
                         .WithMany("Products")
                         .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PcBuilder.Models.Subcategory", "Subcategory")
                         .WithMany("Products")
                         .HasForeignKey("SubCategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Offer");
@@ -597,7 +596,7 @@ namespace PcBuilder.Migrations
                     b.HasOne("PcBuilder.Models.Product", "Product")
                         .WithMany("Sales")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Product");
@@ -608,7 +607,7 @@ namespace PcBuilder.Migrations
                     b.HasOne("PcBuilder.Models.Category", "Category")
                         .WithMany("Subcategories")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -619,7 +618,7 @@ namespace PcBuilder.Migrations
                     b.HasOne("PcBuilder.Models.AppUser", "User")
                         .WithMany("UserOffers")
                         .HasForeignKey("UserId1")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("User");
                 });

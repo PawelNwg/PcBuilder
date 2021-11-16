@@ -71,9 +71,7 @@ namespace PcBuilder.Controllers
                     File = null,
                     Quantity = 1,
                 };
-                //_context.Products.Add(productToAdd);
-                //await _context.SaveChangesAsync();
-                _repositoryWrapper.RepositoryProduct.Add(productToAdd); // doesnt work, _context add is not generic?
+                _repositoryWrapper.RepositoryProduct.Add(productToAdd); 
                 await _repositoryWrapper.RepositoryProduct.SaveProduct();
                 TempData["ProductToUpload"] = productToAdd.ProductId;
                 return RedirectToAction("AddImageToProduct", new { productId = productToAdd.ProductId });

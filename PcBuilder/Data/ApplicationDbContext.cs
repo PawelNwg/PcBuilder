@@ -26,6 +26,10 @@ namespace PcBuilder.Data
              {
                  entity.HasKey(e => new { e.OrderId, e.OfferId });
              });
+            builder.Entity<Product>(entity =>
+            {
+                entity.HasMany(x => x.DetailedDataProducts).WithOne(y => y.Product).OnDelete(DeleteBehavior.Cascade);
+            });
         }
 
         public virtual DbSet<AppUser> AppUsers { get; set; }

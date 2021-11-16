@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 using PcBuilder.Data;
 using PcBuilder.Interfaces;
+using PcBuilder.Repositories.Interfaces;
 using PcBuilder.Services.ImageToBlobStorage;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,19 @@ namespace PcBuilder.Repositories
                 if (repositoryDetailedDataProduct == null)
                     repositoryDetailedDataProduct = new RepositoryDetailedDataProduct(_context);
                 return repositoryDetailedDataProduct;
+            }
+        }
+
+
+        private IRepositoryUser repositoryUser;
+
+        public IRepositoryUser RepositoryUser
+        {
+            get
+            {
+                if (repositoryUser == null)
+                    repositoryUser = new RepositoryUser(_context);
+                return repositoryUser;
             }
         }
 

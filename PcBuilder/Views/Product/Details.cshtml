@@ -32,5 +32,9 @@
         </div>
         <hr>
         <button type="button" class="btn btn-primary btn-md mr-1 mb-2"><a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId">Dodaj do koszyka</a></button>
+        @if (Context.User.Identity.IsAuthenticated == true && Context.User.IsInRole("Admin"))
+        {
+            <button type="button" class="btn btn-primary btn-md mr-1 mb-2"><a asp-controller="Admin" asp-action="DeleteProduct" asp-route-id="@Model.ProductId">Usuń</a></button>
+        }
     </div>
 </section>

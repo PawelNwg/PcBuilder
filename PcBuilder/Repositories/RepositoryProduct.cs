@@ -65,5 +65,10 @@ namespace PcBuilder.Repositories
         {
             await Save();
         }
+
+        public void DeleteProduct(Product product)
+        {
+            Delete(product);
+        }
     }
 }
