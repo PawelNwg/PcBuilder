@@ -1,0 +1,24 @@
+﻿@model List<PcBuilder.Models.Product>
+<head>
+    <link href="../css/site.css" rel="stylesheet" />
+</head>
+<ul class="row mt-3" style="margin: 0px" id="products">
+    @foreach (var item in Model)
+    {
+        <a asp-controller="Product" asp-action="Details" asp-route-id="@item.ProductId" class="details">
+            <li>
+                <div class="card col">
+                    <div class="imgProduct">
+                        <img src="data:image/jpeg;base64, @item.File" />
+                    </div>
+                    <div class="content">
+                        <h3>@item.Name</h3>
+                        <h2>@item.Price</h2>
+                        <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.ProductId" class="buy">Dodaj do koszyka</a>
+                    </div>
+                </div>
+            </li>
+        </a>
+    }
+</ul>
+

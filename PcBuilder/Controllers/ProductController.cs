@@ -26,18 +26,15 @@ namespace PcBuilder.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            return View();
+            return View(id);
         }
 
-        public async Task<IActionResult> SelectedProductList(int id)
+        public IActionResult SelectedProductList(string searchString = null, string sortOrder = null, int id = 0, int subcategoryId = 0)
         {
-            var subcategory = await _repositoryWrapper.RepositorySubcategory.GetByCondition(a => a.CategoryId == id);
-
-            var selectedProducts = await _repositoryWrapper.RepositoryProduct.GetByCondition(p => p.SubCategoryId == subcategory[0].SubcategoryId); // change
-
-            return View(selectedProducts);
+            var categoryId = id;
+            return ViewComponent("ProductList", new { searchString, sortOrder, categoryId, subcategoryId });
         }
 
         public async Task<IActionResult> Details(int id)
@@ -71,7 +68,7 @@ namespace PcBuilder.Controllers
                     File = null,
                     Quantity = 1,
                 };
-                _repositoryWrapper.RepositoryProduct.Add(productToAdd); 
+                _repositoryWrapper.RepositoryProduct.Add(productToAdd);
                 await _repositoryWrapper.RepositoryProduct.SaveProduct();
                 TempData["ProductToUpload"] = productToAdd.ProductId;
                 return RedirectToAction("AddImageToProduct", new { productId = productToAdd.ProductId });

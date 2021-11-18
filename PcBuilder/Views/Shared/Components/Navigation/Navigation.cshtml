@@ -17,9 +17,9 @@
     </div>
     <ul class="nav flex-column">
         <li>
-            <form asp-controller="Home" asp-action="index" method="get">
+            <form>
                 @*<i class='bx bx-search'></i>*@
-                <input type="text" placeholder="Szukaj" name="searchString" />
+                <input type="text" placeholder="Szukaj" id="searchString"/>
             </form>
         </li>
 
@@ -55,7 +55,7 @@
                     break;
             }
             <li class="nav-item">
-                <a class="nav-link" asp-controller="Product" asp-action="SelectedProductList" asp-route-id="@item.CategoryId">@item.Name</a>
+                <a class="nav-link" asp-controller="Product" asp-action="Index" asp-route-id="@item.CategoryId">@item.Name</a>
             </li>
         }
     </ul>
@@ -90,7 +90,4 @@
         sidebar.classList.toggle("active");
     }
 
-    //searchBtn.onclick = function () {
-    //    sidebar.classList.toggle("active");
-    //}
 </script>

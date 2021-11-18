@@ -26,16 +26,9 @@ namespace PcBuilder.Controllers
             this.imageService = imageService;
         }
 
-        public async Task<IActionResult> Index(string searchString)
+        public IActionResult Index()
         {
-            List<Product> products;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                products = await _repositoryWrapper.RepositoryProduct.GetByCondition(p => p.Name.Contains(searchString));
-                return View(products);
-            }
-            products = await _repositoryWrapper.RepositoryProduct.GetAll();
-            return View(products);
+            return View();          
         }
 
         [HttpPost]
@@ -61,6 +54,13 @@ namespace PcBuilder.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public IActionResult testtt(string sortValue)
+        {
+            int a = 123;
+            return RedirectToAction("Index", "Home");
         }
     }
 }

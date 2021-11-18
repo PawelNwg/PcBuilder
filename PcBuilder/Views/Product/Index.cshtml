@@ -1,0 +1,25 @@
+﻿@model int
+
+<head>
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/Card.css" rel="stylesheet" />
+</head>
+<body>
+    @await Component.InvokeAsync("Sort")
+    <section>
+        <div id="container">
+            @await Component.InvokeAsync("ProductList", new { categoryId = Model })
+        </div>
+    </section>
+    <script>
+            $('form').submit(function (e) {
+                e.preventDefault();
+                $.post("@Url.Action("SelectedProductList", "Product")", { searchString: $('#searchString').val(), id: @Model }).done(function (data) { $('#container').html (data) });
+            });
+
+            $('#sort').change(function (e) {
+                e.preventDefault();
+                $.post("@Url.Action("SelectedProductList", "Product")", { sortOrder: $('#sort').val(), id: @Model }).done(function (data) { $('#container').html (data) });
+            });
+    </script>
+</body>
