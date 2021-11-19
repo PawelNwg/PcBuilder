@@ -3,97 +3,160 @@
     <title>@ViewData["Title"]</title>
     <link href="~/css/Cart.css" rel="stylesheet" />
 </head>
+<body>
+    <section>
 
-<section>
+        <!--Grid row-->
+        <div class="row">
 
-    <!--Grid row-->
-    <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-8">
 
-        <!--Grid column-->
-        <div class="col-lg-8">
-
-            <!-- Card -->
-            <div class="mb-3">
-                <div class="pt-4 wish-list">
-                    @if (Model.CartPositions != null)
-                    {
-
-                        @foreach (var cartPosition in Model.CartPositions)
+                <!-- Card -->
+                <div class="mb-3">
+                    <div class="pt-4 wish-list">
+                        @if (Model.CartPositions != null)
                         {
-                            <div class="row mb-4">
-                                <!--<div class="col-md-5 col-lg-3 col-xl-3">
-                                    <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
-                                        <img class="img-fluid w-100"
-                                             src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg" alt="Sample">
-                                    </div>
-                                </div>-->
-                                <div class="col-md-7 col-lg-9 col-xl-9">
-                                    <div>
-                                        <div class="d-flex justify-content-between">
-                                            <div>
-                                                <h5>@cartPosition.product.Name</h5>
-                                                <p class="mb-3 text-muted text-uppercase small">@cartPosition.product.Subcategory</p>
-                                                <p class="mb-3 text-muted text-uppercase small">Zamawiana ilość: <strong>@cartPosition.quantity</strong></p>
-                                                @*<p class="mb-2 text-muted text-uppercase small">Color: blue</p>
-                                                    <p class="mb-3 text-muted text-uppercase small">Size: M</p>*@
-                                            </div>
+
+                            @foreach (var cartPosition in Model.CartPositions)
+                            {
+                                <div class="row mb-4">
+                                    <!--<div class="col-md-5 col-lg-3 col-xl-3">
+                                        <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+                                            <img class="img-fluid w-100"
+                                                 src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg" alt="Sample">
                                         </div>
-                                        <div class="d-flex justify-content-between align-items-center trash">
-                                            <div>
-                                                <a asp-controller="Cart" asp-action="RemoveFromCart" asp-route-id="@cartPosition.product.ProductId" type="button" class="card-link-secondary small text-uppercase mr-3">
-                                                    <i class="bx bxs-trash"></i> Usuń
-                                                    @*bs bxs-trash-alt*@
-                                                </a>
-                                                @*<a href="#!" type="button" class="card-link-secondary small text-uppercase">
-                                                    <i class="fas fa-heart mr-1"></i> Move to wish list
-                                                    </a>*@
+                                    </div>-->
+                                    <div class="col-md-7 col-lg-9 col-xl-9">
+                                        <div>
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <h5>@cartPosition.product.Name</h5>
+                                                    <p class="mb-3 text-muted text-uppercase small">@cartPosition.product.Subcategory</p>
+                                                    <p class="mb-3 text-muted text-uppercase small">Zamawiana ilość: <strong>@cartPosition.quantity</strong></p>
+                                                    @*<p class="mb-2 text-muted text-uppercase small">Color: blue</p>
+                                                        <p class="mb-3 text-muted text-uppercase small">Size: M</p>*@
+                                                </div>
                                             </div>
-                                            <p class="mb-0"><span><strong id="summary">@cartPosition.product.Price zł</strong></span></p>
+                                            <div class="d-flex justify-content-between align-items-center trash">
+                                                <div>
+                                                    <a asp-controller="Cart" asp-action="RemoveFromCart" asp-route-id="@cartPosition.product.ProductId" type="button" class="card-link-secondary small text-uppercase mr-3">
+                                                        <i class="bx bxs-trash"></i> Usuń
+                                                        @*bs bxs-trash-alt*@
+                                                    </a>
+                                                    @*<a href="#!" type="button" class="card-link-secondary small text-uppercase">
+                                                        <i class="fas fa-heart mr-1"></i> Move to wish list
+                                                        </a>*@
+                                                </div>
+                                                <p class="mb-0"><span><strong id="summary">@cartPosition.product.Price zł</strong></span></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <hr class="mb-4">
+                                <hr class="mb-4">
+                            }
                         }
-                    }
-                </div>
-            </div>
-            @*<div class="mb-3">
-                    <div class="pt-4">
-                        <h5 class="mb-4">Expected shipping delivery</h5>
-
-                        <p class="mb-0"> Thu., 12.03. - Mon., 16.03.</p>
                     </div>
-                </div>*@
-        </div>
-        <div class="col-lg-4">
-            <!-- Card -->
-            <div class="mb-3">
-                <div class="pt-4">
-                    <h5 class="mb-3">Podsumowanie zamówienia</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                            Cena tymczasowa
-                            <span>@Model.TotalPrice  zł</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                            Wysyłka
-                            <span>Gratis</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                            <div>
-                                <strong>Cena całkowita</strong>
-                                <strong>
-                                    <p class="mb-0">(włączając VAT)</p>
-                                </strong>
-                            </div>
-                            <span><strong>@Model.TotalPrice  zł</strong></span>
-                        </li>
-                    </ul>
+                </div>
+                @*<div class="mb-3">
+                        <div class="pt-4">
+                            <h5 class="mb-4">Expected shipping delivery</h5>
 
-                    <button type="button" class="btn btn-primary btn-block">Zapłać</button>
+                            <p class="mb-0"> Thu., 12.03. - Mon., 16.03.</p>
+                        </div>
+                    </div>*@
+            </div>
+            <div class="col-lg-4">
+                <!-- Card -->
+                <div class="mb-3">
+                    <div class="pt-4">
+                        <h5 class="mb-3">Podsumowanie zamówienia</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                Cena tymczasowa
+                                <span>@Model.TotalPrice  zł</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                Wysyłka
+                                <span>Gratis</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                <div>
+                                    <strong>Cena całkowita</strong>
+                                    <strong>
+                                        <p class="mb-0">(włączając VAT)</p>
+                                    </strong>
+                                </div>
+                                <span><strong>@Model.TotalPrice  zł</strong></span>
+                            </li>
+                        </ul>
+
+                        <form method="post" action="https://secure.payu.com/api/v2_1/orders">
+                            <input type="hidden" name="continueUrl" value="http://shop.url/continue">
+                            <input type="hidden" name="currencyCode" value="PLN">
+                            <input type="hidden" name="customerIp" value="123.123.123.123">
+                            <input type="hidden" name="description" value="Order description">
+                            <input type="hidden" name="merchantPosId" value="145227">
+                            <input type="hidden" name="notifyUrl" value="http://shop.url/notify">
+                            <input type="hidden" name="products[0].name" value="Product 1">
+                            <input type="hidden" name="products[0].quantity" value="1">
+                            <input type="hidden" name="products[0].unitPrice" value="1000">
+                            <input type="hidden" name="totalAmount" value="1000">
+                            <input type="hidden" name="OpenPayu-Signature" value="sender=145227;algorithm=SHA-256;signature=bc94a8026d6032b5e216be112a5fb7544e66e23e68d44b4283ff495bdb3983a8">
+                            <button type="submit" class="btn btn-primary btn-block" formtarget="_blank">Zapłać</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+    @*<script>
+        var data = {
+            "order": {
+                "orderId": "LDLW5N7MF4140324GUEST000P01",
+                "extOrderId": "Order id in your shop",
+                "orderCreateDate": "2012-12-31T12:00:00",
+                "notifyUrl": "http://tempuri.org/notify",
+                "customerIp": "127.0.0.1",
+                "merchantPosId": "{POS ID (pos_id)}",
+                "description": "My order description",
+                "currencyCode": "PLN",
+                "totalAmount": "200",
+                "buyer": {
+                    "email": "john.doe@example.org",
+                    "phone": "111111111",
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "language": "en"
+                },
+                "payMethod": {
+                    "type": "PBL" //or "CARD_TOKEN", "INSTALLMENTS"
+                },
+                "products": [
+                    {
+                        "name": "Product 1",
+                        "unitPrice": "200",
+                        "quantity": "1"
+                    }
+                ],
+                "status": "COMPLETED"
+            },
+            "localReceiptDateTime": "2016-03-02T12:58:14.828+01:00",
+            "properties": [
+                {
+                    "name": "PAYMENT_ID",
+                    "value": "151471228"
+                }
+            ]
+        }
+
+        $.ajax({
+            url: "185.68.14.10",
+            type: "POST",
+            data: JSON.stringify(data),
+            processData: false,
+            contentType: "application/json; charset=UTF-8",
+            complete: callback
+        });
+    </script>*@
+</body>
