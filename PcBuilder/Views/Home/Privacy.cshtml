@@ -1,6 +1,114 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Jak zbudować optymalny komputer?";
 }
-<h1>@ViewData["Title"]</h1>
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
 
-<p>Use this page to detail your site's privacy policy.</p>
+
+    <h1>@ViewData["Title"]</h1>
+    Komponenty wymagane do budowy komputera
+
+    <div class="mt-3"/>
+
+    <div class="row">
+        <div class="col-4">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-memory-list" data-toggle="list" href="#list-memory"role="tab" aria-controls="Pamięć">Pamięć masowa</a>
+                <a class="list-group-item list-group-item-action" id="list-profile-list"  data-toggle="list" href="#list-gpu"  role="tab" aria-controls="Karta graficzna">Karta graficzna</a>
+                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-case" role="tab" aria-controls="Obudowa">Obudowa</a>
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-ram" role="tab" aria-controls="Pamięć ram">Pamięć RAM</a>
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-motherboard" role="tab" aria-controls="Płyty główne">Płyta główna</a>
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-psu" role="tab" aria-controls="Zasilacze">Zasilacz</a>
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-cooling" role="tab" aria-controls="Chłodzenie">Chłodzenie</a>
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-cpu" role="tab" aria-controls="Procesor">Procesor</a>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="tab-content text-justify mr-5" id="nav-tabContent">
+                <div class="tab-pane fade active" id="list-memory" role="tabpanel" aria-labelledby="list-memory-list">
+                    Układ odpowiedzialny za przechowywanie danych przez dłuższy okres czasu. Dostęp do tej pamięci w porównaniu do przykładowo pamięci operacyjnej jest o wiele dłuższy czasowo. Wartości jakie charakteryzują pamięć to szybkość transmisji danych oraz czas dostępu do nich. Nowoczesna pamięć dzieli się na dyski półprzewodnikowe SSD oraz dyski twarde HDD.
+                    <br /><br />
+                    Dyski HDD – dane przechowywane są na magnetycznym talerzu, odczyt oraz zapis realizuje zamontowane tam ramie mechaniczne ramię. Dyski typu HDD występują w rozmiarze 2,5 cala, te najczęściej znajdują się w komputerach przenośnych a ich zakres obrotów na minutę wynosi do 5400. Drugim rozmiarem jest dysk o wielkości 3,5 cala, jest on dużo bardziej powszechny od poprzednika a jego częstotliwość obrotu wynosi maksymalnie 7200 obrotów na minutę.
+                    <br /><br />
+                    Dyski SSD – konstrukcyjnie oparte są na technologii NAND wykorzystanej do przechowywania danych. W przeciwieństwie do dysków HDD, dyski SSD nie korzystają z ruchomych części a z procesorów zintegrowanych w celu dostępu do pamięci. Dyski SSD są dużo szybsze od dysków HDD oraz mniej podatne na uszkodzenia mechaniczne jednak ich minusem jest wyższa cena.
+                    <br /><br />
+                    W przypadku wyboru dysku dobrą wiadomością jest fakt, że w komputerze mogą występować oba rodzaje dysków. Takie działanie jest też zazwyczaj zalecane. Dyski SSD z uwagi na wyższą cenę wykorzystuje się do przechowywania systemu operacyjnego, który zajmuje mniej miejsca niż aplikacje oraz programy, które można przechowywać na tańszym oraz większym dysku HDD. W ten sposób ekonomicznie można połączyć plusy korzystania z obu dysków.
+                </div>
+
+                <div class="tab-pane fade" id="list-gpu" role="tabpanel" aria-labelledby="list-gpu-list">
+                    Układ (ang. GPU) odpowiedzialny jest za generowanie obrazu oraz animacji na ekranie komputera. Podział procesorów graficznych ze względu na rodzaje:
+                    <br /><br />
+                    Zintegrowany procesor graficzny - jest jak sama nazwa wyjaśnia zintegrowany z procesorem, oferuje niską wydajność, zazwyczaj wystarczającą do podstawowych zastosowań komputera. Nie stanowi oddzielnego modułu co ma wpływ na zajmowane miejsce, wytwarzane przez komputer ciepło oraz pobieraną energię elektryczną.
+                    <br /><br />
+                    Dedykowana karta graficzna – oddzielny komponent połączony z płytą główną za pomocą portu PCIe. Karty graficzne występują zazwyczaj z własnym zasobami takimi jak pamięć wideo czy chłodzenie. Oferuje dynamiczne generowanie obrazu 3D w wysokiej rozdzielczości, przyspiesza zaawansowane obliczenia oraz pozwala na korzystanie z programów do obróbki grafiki.
+                </div>
+
+                <div class="tab-pane fade" id="list-case" role="tabpanel" aria-labelledby="list-case-list">
+                    Komponent, który spośród wymienionych tutaj elementów jako jedyny nie wykonuje operacji na jakichkolwiek danych. Obudowa komputera służy do zabezpieczenia jego komponentów przed czynnikami zewnętrznymi, pozwala też ograniczyć poziom hałasu generowany przez działający komputer. Nowoczesne obudowy konturowane są z myślą o optymalnych przepływie powietrza wewnątrz by chłodzić działające komponenty zarówno pasywnie jak i aktywnie poprzez zamontowane chłodzenie. Dostępne rodzaje obudów komputerowych:
+                    <br /><br />
+                    Obudowa Full Tower – obudowa będąca w stanie pomieścić płyty główne we wszystkich rozmiarach wliczając Extended-ATX.
+                    <br /><br />
+                    Obudowa Mid Tower – obudowa najbardziej powszechna, mieszcząca płytę główną w standardzie ATX
+                    <br /><br />
+                    Obudowa Mini Tower – obudowa fizycznie najmniejsza, przystosowana do przechowywania płyty w standardzie mniejszym niż ATX, przykładowo mini-ITX.
+                </div>
+                <div class="tab-pane fade" id="list-ram" role="tabpanel" aria-labelledby="list-ram-list">
+                    Pamięć o dostępie swobodnym (ang. RAM) to pamięć ulotna komputera. Charakteryzuje się szybkością oraz łatwością dostępu w porównaniu do pamięci masowej. Służy do przechowywania danych aktywnie wykorzystywanych przez komputer. Ilość pamięci RAM w komputerze wpływa na jego funkcjonowanie w przypadku korzystania z kilku wymagających aplikacji jednocześnie. Standardem ilości pamięci jest aktualnie kość o rozmiarze 8GB, jednak ilość ta dąży do 16GB. Ilość pamięci jest ważna jednak sposób jej konstrukcji na płycie głównej jest równie ważny. Korzystając z technologii Dual-Channel optymalniejszym wyborem jest zakup dwukrotnie pamięci o rozmiarze 4GB niż jednej o wielkości 8GB, w ten sposób możliwe jest wykorzystanie wcześniej wspomnianej technologii poprawiającej wydajność komputera. Aktualnie pamięć RAM dzieli się na standardy:
+                    <br /><br />
+                    DDR3 oraz DDR4
+                    <br /><br />
+                    Czynniki charakteryzujące pamięć RAM:
+                    <br /><br />
+                    Opóźnienia (CL ang. CAS Latency) – jest to czas wymagany do dostępu do określonej kolumny pamięci. Kości z mniejszym opóźnieniem naturalnie są korzystniejsze do zakupu.
+                    <br /><br />
+                    Częstotliwość – taktowanie pamięci, im wyższa wartość tym większa wydajność pamięci
+                    <br /><br />
+                    Standard – określa kompatybilność pamięci z płytą główną
+                </div>
+                <div class="tab-pane fade" id="list-motherboard" role="tabpanel" aria-labelledby="list-motherboard-list">
+                    Podstawowy układ scalony stanowiący fizyczne miejsce połączenia wszystkich pozostałych komponentów. Płyty główne charakteryzują się jakością wykonania, liczbą portów oraz złącz, technologiami oraz standardami wielkości, wyróżniamy:
+                    <br /><br />
+                    Płyty główne Extended ATX – największe rozmiarowo płyty (305 x 330 mm lub 305 x 279 mm) posiadające do ośmiu gniazd pamięci RAM co może skutkować 128 Gigabajtami pamięci.
+                    <br /><br />
+                    Płyty główne ATX – najczęściej spotykany standard płyty (305 x 244 mm) zazwyczaj posiada do czterech gniazd pamięci RAM
+                    <br /><br />
+                    Płyty główne Micro-ATX – tak jak standard ATX posiada do czterech gniazd pamięci przy rozmiarze (244 x 244 mm)
+                    <br /><br />
+                    Płyty główne Mini-ITX – najmniejszy standard (170 x 170mm) o maksymalnie dwóch gniazdach pamięci RAM
+                </div>
+                <div class="tab-pane fade" id="list-psu" role="tabpanel" aria-labelledby="list-psu-list">
+                    Układ odpowiedzialny za dostarczenie energii elektrycznej do komponentów komputera (ang. PSU). Zasilacz sprawia pozór komponentu niskiej wagi jednak wybór odpowiedniego egzemplarza ma wpływ na bezpieczeństwo całego komputera. Zasilacze komputerowe oznaczane są certyfikatami wydajności dostarczanej energii poziomu BRONZE, SILVER, GOLD oraz PLATINIUM oznaczające odpowiedni procent wydajności pod obciążeniem. Dodatkowo dobrej jakości zasilacze posiadają certyfikaty bezpieczeństwa przykładowo OCP (ang. Over-Current Protection) oraz SCP (ang. Short Circuit Protection), warto upewnić się więc, że komponent posiada takie certyfikaty dbając o bezpieczeństwo zarówno komponentów komputera jak i użytkownika. Kolejnym czynnikiem warunkującym zasilacz jest wytwarzany przez niego hałas. Zasilacz, który podczas pracy jest głośny będzie przeszkodą w pracy rozpraszając użytkownika. Zasilacze ze względu na budowę dzielą się na:
+                    <br /><br />
+                    Pełnomodułowe – każdy przewód zasilacza można swobodnie modyfikować w miarę potrzeby do zamontowanych w obudowie komponentów.
+                    <br /><br />
+                    Półmodułowe – niezbędne przewody przymocowane są na stałe, reszta jest modyfikowalna.
+                    <br /><br />
+                    Niemodułowe – wszystkie odchodzące od zasilacza przewody są przytwierdzone na stałe uniemożliwiając modyfikacje instalacji do poszczególnych komponentów. Nieużywane przewody pozostaną wewnątrz obudowy zajmując miejsce oraz ograniczając przepływ powietrza.
+                </div>
+                <div class="tab-pane fade" id="list-cooling" role="tabpanel" aria-labelledby="list-cooling-list">
+                    Komponenty komputerowe podczas swojej pracy wytwarzają ciepło, które powinno zostać odprowadzone z obudowy. Wysoka temperatura wewnątrz prowadzi do zjawiska zwanego ang. Thermal throttling’u co oznacza ograniczenie wydajności komponentu w celu ochrony jego elementów elektronicznych przed uszkodzeniem w skutek przegrzania. Okoliczność ta, jeżeli występuje stosunkowo często może stale blokować pełny potencjał komputera równocześnie skracając żywotność komponentów z uwagi na niekorzystne warunki termiczne panujące w obudowie. Rozwiązaniem problemu przegrzewania się komputera jest zastosowanie chłodzenia. Chłodzenie może zostać wykorzystane w przypadku procesora, karty graficznej lub jako usprawnienie przepływu powietrza w obudowie. Poprawienie temperatury zapewni wzrost wydajności a lepsze warunki termiczne przełożą się na dłuższy okres bezawaryjnego funkcjonowania zainstalowanych komponentów. Chłodzenie można wyodrębnić na:
+                    <br /><br />
+                    Chłodzenie powietrzem – wykorzystuje wentylator do odprowadzenia ciepłego powietrza, charakteryzują się niską ceną. Jako minus występuje tutaj generowany hałas oraz zajmowane miejsce, które ogranicza przepływ powietrza w obudowie.
+                    <br /><br />
+                    Chłodzenie cieczą – wykorzystuje czynnik chłodniczy do odprowadzenia ciepła z układu, charakteryzuje się wysoką ceną oraz trudnym montażem instalacji dostarczania płynu. W zamian oferuje wysoką wydajność oraz mniejszy hałas.
+                </div>
+                <div class="tab-pane fade" id="list-cpu" role="tabpanel" aria-labelledby="list-cpu-list">
+                    Jest to Centralna jednostka obliczeniowa (ang. CPU) nazywana potocznie mózgiem komputera. Tak jak ludzki mózg, procesor przetwarza wysyłane mu zadania tworzone przez aplikacje czy programy istniejące na komputerze. Wykonanie polecenia sygnalizuje dalej a następnie przechodzi do kolejnego zadania.
+                    <br /><br />
+                     Wydajność procesora może zależeć od mnogiej liczby jego właściwości jednak przy zakupie tego komponentu najczęściej wyróżniane są liczba rdzeni oraz częstotliwość pracy zegara. Liczba rdzeni oznacza liczbę procesorów stanowiących CPU, jednocześnie mówi, ile zadań centralna jednostka obliczeniowa jest w stanie wykonać jednocześnie. Szybkość zegara ukazuje prędkość z jaką centralna jednostka obliczeniowa wykonuje powierzone jej zadanie, wartość ta podawana jest GHz, gdyż odnosi się do ilości cykli wykonywanych przez procesor w czasie jednej sekundy. Oprócz podanych właściwości warto zwrócić też uwagę na dodatkowe technologie procesora implementowane przez producentów. Firma Intel oferuje technologię Intel® Hyper-Threading aby każdy rdzeń procesora uruchamiał wiele wątków zwiększając tym samym wydajność.
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .list-group-item.active {
+            z-index: 2;
+            color: #fff;
+            background-color: #292482;
+            border-color: #292482;
+        }
+
+    </style>
+</body>

@@ -12,6 +12,13 @@ a {
     color: #0366d6;
 }
 
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #292482 !important;
+    border-color: #292482 !important;
+}
+
 .btn-primary {
     color: #fff;
     background-color: #292482 !important;
@@ -20,8 +27,8 @@ a {
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: #292482;
+    border-color: #292482;
 }
 
 /* Sticky footer styles
@@ -121,4 +128,9 @@ button {
 
 .mleft {
     margin-left: 50%;
+}
+
+.custom-select {
+    position: relative;
+    width:200px;
 }
