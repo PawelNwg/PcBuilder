@@ -43,12 +43,12 @@ namespace PcBuilder.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required(ErrorMessage = "Nieprawidłowy adres email")]
-            [EmailAddress]
+            [Required(ErrorMessage = "adres email jest wymagany")]
+            [EmailAddress(ErrorMessage = "Nieprawidłowy adres email")]
             public string Email { get; set; }
 
-            [Required(ErrorMessage = "Nieprawidłowy format hasła")]
-            [DataType(DataType.Password)]
+            [Required(ErrorMessage = "hasło jest wymagane")]
+            [DataType(DataType.Password, ErrorMessage = "Nieprawidłowy format hasła")]
             public string Password { get; set; }
 
             [Display(Name = "Remember me?")]
@@ -85,7 +85,7 @@ namespace PcBuilder.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
+                    _logger.LogInformation("Użytkownik zalogowny.");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -94,7 +94,7 @@ namespace PcBuilder.Areas.Identity.Pages.Account
                 }
                 if (result.IsLockedOut)
                 {
-                    _logger.LogWarning("User account locked out.");
+                    _logger.LogWarning("Konto użytkownika jest zablokowanie.");
                     return RedirectToPage("./Lockout");
                 }
                 else

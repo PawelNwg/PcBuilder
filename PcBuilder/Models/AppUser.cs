@@ -8,6 +8,7 @@ namespace PcBuilder.Models
 {
     public class AppUser : Microsoft.AspNetCore.Identity.IdentityUser
     {
+        [EmailAddress(ErrorMessage = "aaaaaaaaaaaaaaaaaaaaaaaaaa")]
         [Required]
         [MaxLength(20, ErrorMessage = "Imię może mieć maksymalnie 20 znaków")]
         [Display(Name = "Imię")]

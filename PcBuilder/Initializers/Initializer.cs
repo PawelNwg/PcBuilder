@@ -92,7 +92,7 @@ namespace PcBuilder.Initializers
                 Description = "Wydajna karta graficzna o niskiej mocy",
                 Quantity = 10,
                 SubCategoryId = 7,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\63836162-3717-4015-b762-13de00d8b06e.png"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\69fb19b4-9ee7-4a36-9bb4-b3679a09bb38.png"
                 },
                 new Product()
                 {
@@ -101,7 +101,7 @@ namespace PcBuilder.Initializers
                 Description = "Wydajna karta graficzna o średniej mocy",
                 Quantity = 10,
                 SubCategoryId = 7,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\c4ab17da-c1b5-4c56-b3bf-de1f1a4986a8.png"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\69fb19b4-9ee7-4a36-9bb4-b3679a09bb38.png"
                 },
                 new Product()
                 {
@@ -110,7 +110,7 @@ namespace PcBuilder.Initializers
                 Description = "Wydajna karta graficzna o średniej mocy",
                 Quantity = 10,
                 SubCategoryId = 7,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\62442976-61b6-4a28-b164-7d659a404cbd.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\69fb19b4-9ee7-4a36-9bb4-b3679a09bb38.png"
                 },
                 new Product(){
                 Name = "RTX 3060Ti",
@@ -118,7 +118,7 @@ namespace PcBuilder.Initializers
                 Description = "Wydajna karta graficzna o wysokiej mocy",
                 Quantity = 10,
                 SubCategoryId = 7,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\27d1f4b7-28ad-485c-875d-ea790872f59e.png"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\69fb19b4-9ee7-4a36-9bb4-b3679a09bb38.png"
                 },
                 new Product(){
                 Name = "RTX 3090",
@@ -126,7 +126,7 @@ namespace PcBuilder.Initializers
                 Description = "Wydajna karta graficzna o potężnej mocy",
                 Quantity = 10,
                 SubCategoryId = 7,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\6c97c9f1-52e9-4cbf-b733-a2436b3bce7e.png"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\69fb19b4-9ee7-4a36-9bb4-b3679a09bb38.png"
                 },
                 new Product()
                 {
@@ -135,7 +135,7 @@ namespace PcBuilder.Initializers
                 Description = "dysk ssd",
                 Quantity = 10,
                 SubCategoryId = 8,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\1cf1494f-f007-48dd-93c4-61ad8a99e8f4.png"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\e47b6ce5-d165-4f54-a3d5-28a5c0b077eb.png"
                 },
                 new Product()
                 {
@@ -144,7 +144,7 @@ namespace PcBuilder.Initializers
                 Description = "cpu",
                 Quantity = 10,
                 SubCategoryId = 3,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\7c533eea-80de-4fe7-a162-72097c675259.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\3811d45a-2469-4910-9501-a9125dd84b5b.png"
                 },
                 new Product()
                 {
@@ -153,7 +153,7 @@ namespace PcBuilder.Initializers
                 Description = "płyta główna",
                 Quantity = 10,
                 SubCategoryId = 4,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\7ba6432d-ca42-49dd-8d9e-240b85c9004c.png"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\82bde16e-192a-4b57-abca-fc90e90e83b2.png"
                 },
                 new Product()
                 {
@@ -162,7 +162,7 @@ namespace PcBuilder.Initializers
                 Description = "zasilacz komputerowy",
                 Quantity = 10,
                 SubCategoryId = 2,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\8f2cca3c-8c49-4164-8d65-5efa1f771d35.png"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\e579887b-b248-4445-be82-bcb36f19d2c5.png"
                 },
                 new Product()
                 {
@@ -171,7 +171,7 @@ namespace PcBuilder.Initializers
                 Description = "obudowa komputerowa",
                 Quantity = 10,
                 SubCategoryId = 6,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\4833ea6e-7a50-4045-bcd5-9095ba5058ac.png"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\87f8f519-e743-44b9-ba91-6a4a0a51644f.png"
                 },
                 new Product()
                 {
@@ -180,7 +180,7 @@ namespace PcBuilder.Initializers
                 Description = "Pamięć RAM",
                 Quantity = 10,
                 SubCategoryId = 5,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\c2dc28f0-9545-4828-b530-f36478fb1bfe.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\446d23d0-af6d-4f58-b392-e99f27d78867.png"
                 },
                 new Product()
                 {
@@ -189,7 +189,7 @@ namespace PcBuilder.Initializers
                 Description = "chłodzenie",
                 Quantity = 10,
                 SubCategoryId = 1,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\391b6b0e-2fb1-4d6a-8354-63e68498cd2d.png"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\fc351910-a922-41d4-8453-aa898520b1d5.png"
                 },
                 new Product()
                 {
@@ -198,7 +198,7 @@ namespace PcBuilder.Initializers
                 Description = "cpu",
                 Quantity = 10,
                 SubCategoryId = 3,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\5c16b72a-442d-4d35-bf1c-d3e414528943.png"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\3811d45a-2469-4910-9501-a9125dd84b5b.png"
                 },
                 new Product()
                 {
@@ -207,7 +207,7 @@ namespace PcBuilder.Initializers
                 Description = "cpu",
                 Quantity = 10,
                 SubCategoryId = 3,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\584636cf-e6f2-4cb4-a036-76080540479f.png"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\3811d45a-2469-4910-9501-a9125dd84b5b.png"
                 },
                 new Product()
                 {
@@ -216,7 +216,7 @@ namespace PcBuilder.Initializers
                 Description = "cpu",
                 Quantity = 10,
                 SubCategoryId = 3,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\442f1137-274e-43c3-8574-90f3ae33de92.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\3811d45a-2469-4910-9501-a9125dd84b5b.png"
                 },
                 new Product()
                 {
@@ -225,7 +225,7 @@ namespace PcBuilder.Initializers
                 Description = "zasilacz komputerowy",
                 Quantity = 10,
                 SubCategoryId = 2,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\263706a8-e569-4829-af41-b3bb369f4710.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\e579887b-b248-4445-be82-bcb36f19d2c5.png"
                 },
                 new Product()
                 {
@@ -234,7 +234,7 @@ namespace PcBuilder.Initializers
                 Description = "zasilacz komputerowy",
                 Quantity = 10,
                 SubCategoryId = 2,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\263706a8-e569-4829-af41-b3bb369f4710.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\e579887b-b248-4445-be82-bcb36f19d2c5.png"
                 },
                 new Product()
                 {
@@ -243,7 +243,7 @@ namespace PcBuilder.Initializers
                 Description = "zasilacz komputerowy",
                 Quantity = 10,
                 SubCategoryId = 2,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\263706a8-e569-4829-af41-b3bb369f4710.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\e579887b-b248-4445-be82-bcb36f19d2c5.png"
                 },
                 new Product()
                 {
@@ -252,7 +252,7 @@ namespace PcBuilder.Initializers
                 Description = "zasilacz komputerowy",
                 Quantity = 10,
                 SubCategoryId = 2,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\263706a8-e569-4829-af41-b3bb369f4710.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\e579887b-b248-4445-be82-bcb36f19d2c5.png"
                 },
                 new Product()
                 {
@@ -261,7 +261,7 @@ namespace PcBuilder.Initializers
                 Description = "dysk hdd",
                 Quantity = 10,
                 SubCategoryId = 8,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\7a992821-df49-483e-aacb-805609eb478e.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\e47b6ce5-d165-4f54-a3d5-28a5c0b077eb.png"
                 },
                 new Product(){
                 Name = "Gigabyte M.2 PCIe",
@@ -269,7 +269,7 @@ namespace PcBuilder.Initializers
                 Description = "dysk ssd",
                 Quantity = 10,
                 SubCategoryId = 8,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\85e999cb-a179-4a80-abfa-c3520615bf15.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\e47b6ce5-d165-4f54-a3d5-28a5c0b077eb.png"
                 },
                 new Product()
                 {
@@ -278,7 +278,7 @@ namespace PcBuilder.Initializers
                 Description = "obudowa komputerowa",
                 Quantity = 10,
                 SubCategoryId = 6,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\5a687a75-bbe8-4adb-ade0-54b2896b5260.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\87f8f519-e743-44b9-ba91-6a4a0a51644f.png"
                 },
                 new Product()
                 {
@@ -287,7 +287,7 @@ namespace PcBuilder.Initializers
                 Description = "obudowa komputerowa",
                 Quantity = 10,
                 SubCategoryId = 6,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\df5054d0-03db-48f6-9b6a-17e3c1c09b7d.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\87f8f519-e743-44b9-ba91-6a4a0a51644f.png"
                 },
                 new Product()
                 {
@@ -296,7 +296,7 @@ namespace PcBuilder.Initializers
                 Description = "chłodzenie",
                 Quantity = 10,
                 SubCategoryId = 1,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\aa2992df-203c-48c2-addb-a01612124cfe.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\fc351910-a922-41d4-8453-aa898520b1d5.png"
                 },
                 new Product()
                 {
@@ -305,7 +305,7 @@ namespace PcBuilder.Initializers
                 Description = "Pamięć RAM",
                 Quantity = 10,
                 SubCategoryId = 5,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\8f16cb05-0759-4e3b-a68e-280b4f4b8749.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\446d23d0-af6d-4f58-b392-e99f27d78867.png"
                 },
                 new Product()
                 {
@@ -314,7 +314,7 @@ namespace PcBuilder.Initializers
                 Description = "płyta główna",
                 Quantity = 10,
                 SubCategoryId = 4,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\f91d6d2b-d53a-43f5-ba6b-22d986b07e94.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\82bde16e-192a-4b57-abca-fc90e90e83b2.png"
                 },
                 new Product()
                 {
@@ -323,7 +323,7 @@ namespace PcBuilder.Initializers
                 Description = "płyta główna",
                 Quantity = 10,
                 SubCategoryId = 4,
-                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\de1e4c70-64a2-47e2-ae4a-c55e5339482e.jpg"
+                File = @"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\82bde16e-192a-4b57-abca-fc90e90e83b2.png"
                 },
             };
 

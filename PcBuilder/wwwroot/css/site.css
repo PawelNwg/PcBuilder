@@ -9,7 +9,11 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-    color: #0366d6;
+    color: #292482;
+}
+
+.aColor {
+    color: #292482 !important;
 }
 
 .list-group-item.active {
@@ -25,11 +29,16 @@ a {
     border-color: #292482;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #fff;
+.nav-pills .nav-link.active {
+    color: #fff !important;
     background-color: #292482;
-    border-color: #292482;
 }
+
+.nav-pills a{
+    color: #292482 !important;
+}
+
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -132,5 +141,5 @@ button {
 
 .custom-select {
     position: relative;
-    width:200px;
+    width: 200px;
 }
