@@ -66,10 +66,13 @@ namespace PcBuilder.Controllers
                     Description = product.Description,
                     SubCategoryId = subcategory.SubcategoryId,
                     File = null,
-                    Quantity = 1,
+                    Quantity = 1,                  
                 };
                 _repositoryWrapper.RepositoryProduct.Add(productToAdd);
                 await _repositoryWrapper.RepositoryProduct.SaveProduct();
+                var Offer = new Offer() { Title = productToAdd.Name, CreationDate = DateTime.Now, Description = productToAdd.Description, ExpirationDate = DateTime.Now.AddDays(30), ProductId = productToAdd.ProductId };
+                _repositoryWrapper.RepositoryOffer.Add(Offer);
+                await _repositoryWrapper.RepositoryOffer.SaveOffer();
                 TempData["ProductToUpload"] = productToAdd.ProductId;
                 return RedirectToAction("AddImageToProduct", new { productId = productToAdd.ProductId });
             }

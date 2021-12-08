@@ -67,7 +67,7 @@ namespace PcBuilder.ViewComponents
                 switch (category)
                 {
                     case { Name: MEMORY }:
-                        _validatorMessages.Add($"W konfiguracji brakuje karty pamięci masowej");
+                        _validatorMessages.Add($"W konfiguracji brakuje pamięci masowej");
                         break;
 
                     case { Name: GPU }:

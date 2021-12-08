@@ -25,7 +25,6 @@ namespace PcBuilder.Models
 
         [Display(Name = "Opis")]
         [MaxLength(500, ErrorMessage = "Tytuł może mieć maksymalnie 50 znaków")]
-        [Required(ErrorMessage = "Tytuł jest obowiązkowy")]
         public string Description { get; set; }
 
         public virtual ICollection<OrderOffers> OrdersOffers { get; set; }

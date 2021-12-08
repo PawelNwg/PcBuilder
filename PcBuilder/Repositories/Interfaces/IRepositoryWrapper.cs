@@ -19,5 +19,7 @@ namespace PcBuilder.Interfaces
         IRepositorySubCategory RepositorySubcategory { get; }
         IRepositoryDetailedDataProduct RepositoryDetailedDataProduct { get; }
         IRepositoryUser RepositoryUser { get; }
+        IRepositoryOffer RepositoryOffer { get; }
+        IRepositoryOrder RepositoryOrder { get; }
     }
 }

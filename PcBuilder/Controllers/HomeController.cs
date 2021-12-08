@@ -41,7 +41,6 @@ namespace PcBuilder.Controllers
         [HttpGet]
         public IActionResult Test()
         {
-            //ViewBag.photo = imageService.GetImage(@"D:\STUDIA\SEMESTR VI\PracaInzynierska\PcBuilder\PcBuilder\wwwroot\BlobStorage\6f80b528-fa34-4cf6-9e32-671bbe98e8f7.jpg");
             return View();
         }
 

@@ -19,11 +19,14 @@ namespace PcBuilder.Models
 
         [Display(Name = "Cena")]
         [Required(ErrorMessage = "Cena jest obowiązkowa")]
+        [DataType(DataType.Currency, ErrorMessage = "Zły format ceny")]
+        [Range(0, 999.9999,ErrorMessage = "Zły format ceny")]
+        [DisplayFormat(DataFormatString = "{0,N}", ApplyFormatInEditMode = true)]
         public decimal Price { get; set; }
 
         [Display(Name = "Opis")]
         [MaxLength(500, ErrorMessage = "Opis może mieć maksymalnie 500 znaków")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [Display(Name = "Ilość")]
         public int Quantity { get; set; }

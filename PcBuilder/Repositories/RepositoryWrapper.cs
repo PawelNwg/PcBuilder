@@ -62,6 +62,29 @@ namespace PcBuilder.Repositories
             }
         }
 
+        private IRepositoryOffer repositoryOffer;
+
+        public IRepositoryOffer RepositoryOffer
+        {
+            get
+            {
+                if (repositoryOffer == null)
+                    repositoryOffer = new RepositoryOffer(_context);
+                return repositoryOffer;
+            }
+        }
+
+        private IRepositoryOrder repositoryOrder;
+
+        public IRepositoryOrder RepositoryOrder
+        {
+            get
+            {
+                if (repositoryOrder == null)
+                    repositoryOrder = new RepositoryOrder(_context);
+                return repositoryOrder;
+            }
+        }
 
         private IRepositoryUser repositoryUser;
 

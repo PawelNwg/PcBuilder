@@ -27,7 +27,11 @@ namespace PcBuilder.Services.ImageToBlobStorage
         public string GetImage(string path)
         {
             if (path != null)
-                return Convert.ToBase64String(File.ReadAllBytes(path));
+            {
+                string blobStorage = Path.Combine(env.WebRootPath, "BlobStorage");
+                string filePath = Path.Combine(blobStorage, path);
+                return Convert.ToBase64String(File.ReadAllBytes(filePath));
+            }
             return string.Empty;
         }
 
