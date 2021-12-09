@@ -5,6 +5,15 @@
 <head>
     <link href="~/css/Cart.css" rel="stylesheet" />
 </head>
+@if (ViewData["error"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @ViewData["error"]
+        <button type="button" class="close w-75" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
 <div class="row col-lg-10">
     <div class="col-10">
         <h1> @ViewData["Title"] </h1>
@@ -17,9 +26,9 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
+                <label asp-for="PriceString" class="control-label"></label>
+                <input asp-for="PriceString" class="form-control" />
+                <span asp-validation-for="PriceString" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
@@ -47,7 +56,7 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-    
+
 
 }
 

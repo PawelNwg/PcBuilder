@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,8 +21,6 @@ namespace PcBuilder.Models
         [Display(Name = "Cena")]
         [Required(ErrorMessage = "Cena jest obowiązkowa")]
         [DataType(DataType.Currency, ErrorMessage = "Zły format ceny")]
-        [Range(0, 999.9999,ErrorMessage = "Zły format ceny")]
-        [DisplayFormat(DataFormatString = "{0,N}", ApplyFormatInEditMode = true)]
         public decimal Price { get; set; }
 
         [Display(Name = "Opis")]

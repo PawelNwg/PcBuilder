@@ -1,32 +1,41 @@
 ﻿@model ProductFile
 
-<form method="post" enctype="multipart/form-data">
-    <input type="file" asp-for="file" id="productImage" />
-    <br />
-    <img id="previewImage" src="#" class="imageSize" />
-    <br />
-    <button class="btn btn-primary btn-block mt-3" type="button" id="deleteImage">usuń</button>
-    <button class="btn btn-primary btn-block mt-3" type="submit">zatwierdź</button>
-</form>
+    <div class="justify-content-center align-items-center d-flex flex-column">
+        <form method="post" enctype="multipart/form-data" class="form-inline mb-3">
+            <div class="mt-3 d-flex justify-content-center row">
+                <div class="col-12  d-flex justify-content-center">
+                    <input type="file" asp-for="file" id="productImage" class="btn btn-primary btn-block m-3" />
+                </div>
+                <br />
+                <div class="col-12  d-flex justify-content-center">
+                    <img id="previewImage" src="#" class="rounded img-thumbnail imageSize" />
+                </div>
+                <br />
+                <div class="btn-group col-12  d-flex justify-content-center">
+                    <button class="btn btn-primary btn-block m-3" type="button" id="deleteImage">usuń</button>
+                    <button class="btn btn-primary btn-block m-3" type="submit">zatwierdź</button>
+                </div>
+            </div>
+        </form>
+    </div>
 
-<script>
-    $('#productImage').change(function (e) {
-        e.stopImmediatePropagation();
-        const [file] = this.files;
-        if (file) {
-            var src = URL.createObjectURL(file);
-            $('#previewImage').attr('src', src);
-            $('#previewImage').show();
-        }
-    })
+    <script>
+        $('#productImage').change(function (e) {
+            e.stopImmediatePropagation();
+            const [file] = this.files;
+            if (file) {
+                var src = URL.createObjectURL(file);
+                $('#previewImage').attr('src', src);
+                $('#previewImage').show();
+            }
+        })
 
-    $('#deleteImage').click(function (e) {
-        e.stopImmediatePropagation();
-        $('#productImage').val(null);
-        $('#previewImage').val(null);
-        $('#previewImage').hide();
-    });
+        $('#deleteImage').click(function (e) {
+            e.stopImmediatePropagation();
+            $('#productImage').val(null);
+            $('#previewImage').val(null);
+            $('#previewImage').hide();
+        });
 
+    </script>
 
-
-</script>

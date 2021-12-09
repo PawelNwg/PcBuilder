@@ -56,17 +56,19 @@ namespace PcBuilder.Controllers
         [Authorize]
         public async Task<ActionResult> AddProduct(AddProductViewModel product)
         {
+            Decimal.TryParse(product.PriceString, out decimal priceWithComaDecimal);
+            ViewData["error"] = "";
             if (ModelState.IsValid && product != null)
             {
                 Subcategory subcategory = await _repositoryWrapper.RepositorySubcategory.GetOneByCodition(s => s.CategoryId == product.CategoryId);
                 Product productToAdd = new Product()
                 {
                     Name = product.Name,
-                    Price = product.Price,
+                    Price = priceWithComaDecimal,
                     Description = product.Description,
                     SubCategoryId = subcategory.SubcategoryId,
                     File = null,
-                    Quantity = 1,                  
+                    Quantity = 1,
                 };
                 _repositoryWrapper.RepositoryProduct.Add(productToAdd);
                 await _repositoryWrapper.RepositoryProduct.SaveProduct();
@@ -76,15 +78,16 @@ namespace PcBuilder.Controllers
                 TempData["ProductToUpload"] = productToAdd.ProductId;
                 return RedirectToAction("AddImageToProduct", new { productId = productToAdd.ProductId });
             }
+            else
+                ViewData["error"] = "Wystąpił bląd, spróbuj ponownie";
 
-            return RedirectToAction("Index", "Home");
+            return View(product);
         }
 
         [HttpGet]
         [Authorize]
         public async Task<ActionResult> AddImageToProduct(string productId = "")
         {
-            //var productIdToAddImage = _repositoryWrapper.RepositoryProduct.GetById(Int32.Parse(productId)).Result;
             ProductFile productFile = new ProductFile() { productID = Int32.Parse(productId) };
             return View(productFile);
         }

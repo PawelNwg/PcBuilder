@@ -14,11 +14,11 @@ namespace PcBuilder.Models.ViewModels
         [Required(ErrorMessage = "Nazwa jest obowiązkowa")]
         public string Name { get; set; }
 
+        [Required]
         [Display(Name = "Cena")]
-        [Required(ErrorMessage = "Cena jest obowiązkowa")]
-        [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
-        [Range(1, 99999.99, ErrorMessage = "Zły format ceny")]
-        public decimal Price { get; set; }
+        [DataType(DataType.Currency)]
+        [RegularExpression(@"^(\d*\,\d{1,2}|\d+)$", ErrorMessage = "Zły format ceny")]
+        public string PriceString { get; set; }
 
         [Display(Name = "Opis")]
         [MaxLength(500, ErrorMessage = "Opis może mieć maksymalnie 500 znaków")]
