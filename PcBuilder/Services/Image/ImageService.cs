@@ -37,6 +37,8 @@ namespace PcBuilder.Services.ImageToBlobStorage
 
         public async Task<string> SaveImage(IFormFile file)
         {
+            if (file is null)
+                return null;
             string extension = Path.GetExtension(file.FileName);
             string fileName = Guid.NewGuid() + extension;
             IImageEncoder encoder = extension switch

@@ -1,7 +1,21 @@
 ﻿@model ProductFile
 
 <form method="post" enctype="multipart/form-data">
-    <input type="file" asp-for="file" />
+    <input type="file" asp-for="file" id="productImage" />
     <br />
-    <button type="submit">zatwierdź</button>
+    <img id="previewImage" src="#" class="imageSize" />
+    <br />
+    <button class="btn btn-primary btn-block mt-3" type="submit">zatwierdź</button>
 </form>
+
+<script>
+    $('#productImage').change(function (e) {
+        e.stopImmediatePropagation();
+        const [file] = this.files;
+        if (file) {
+            var src = URL.createObjectURL(file);
+            $('#previewImage').attr('src', src);
+            $('#previewImage').show();
+        }
+    })
+</script>
