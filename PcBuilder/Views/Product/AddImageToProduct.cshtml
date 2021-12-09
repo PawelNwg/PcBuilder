@@ -5,6 +5,7 @@
     <br />
     <img id="previewImage" src="#" class="imageSize" />
     <br />
+    <button class="btn btn-primary btn-block mt-3" type="button" id="deleteImage">usuń</button>
     <button class="btn btn-primary btn-block mt-3" type="submit">zatwierdź</button>
 </form>
 
@@ -18,4 +19,14 @@
             $('#previewImage').show();
         }
     })
+
+    $('#deleteImage').click(function (e) {
+        e.stopImmediatePropagation();
+        $('#productImage').val(null);
+        $('#previewImage').val(null);
+        $('#previewImage').hide();
+    });
+
+
+
 </script>
