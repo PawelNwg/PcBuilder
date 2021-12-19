@@ -21,7 +21,6 @@ namespace PcBuilder.ViewComponents
 
         // move to enum
         private const string MEMORY = "Pamięć";
-
         private const string GPU = "GPU";
         private const string CASE = "Obudowy";
         private const string RAM = "RAM";
@@ -329,7 +328,7 @@ namespace PcBuilder.ViewComponents
             var motherboardRamClockSpeedValue = components?.Where(x => x.Category?.Name == MOTHERBOARD).FirstOrDefault().DetailedDataProduct?.Where(x => x?.Name == "ClockSpeed").FirstOrDefault().Value;
             if (motherboardRamClockSpeedValue is null)
             {
-                _validatorMessages.Add($"Pamięć RAM wymaga płyty głównej");
+                //_validatorMessages.Add($"Pamięć RAM wymaga płyty głównej");
                 return false;
             }
             List<string> compatibileClockSpeeds = motherboardRamClockSpeedValue.Split(new char[] { ';' }).ToList();

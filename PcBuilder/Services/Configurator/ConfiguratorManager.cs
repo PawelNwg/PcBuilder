@@ -37,6 +37,7 @@ namespace PcBuilder.Services.Configurator
                 throw new Exception();
             }
             productToAdd.File = ""; // automapper here
+            productToAdd.Description = "";
 
             if (_httpContext.HttpContext.Request.Cookies.ContainsKey(Consts.Const.ConfiguratorSessionKey))
             {

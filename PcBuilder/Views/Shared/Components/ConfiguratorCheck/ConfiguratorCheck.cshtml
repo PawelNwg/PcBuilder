@@ -7,12 +7,9 @@
             {
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Configurator" asp-action="SelectedConfiguratorCategory" asp-route-id="@item.CategoryId">
-                        @foreach (var filled in Model.FilledCategories)
-                        {
-                            if (filled.CategoryId == item.CategoryId)
-                            {
-                                <span><i class='bx bxs-check-square'></i></span>
-                            }
+
+                        @if (Model.FilledCategories.Any(c => c.CategoryId == item.CategoryId)){ 
+                        <span><i class='bx bxs-check-square'></i></span>
                         }
                         @item.Name
                     </a>
