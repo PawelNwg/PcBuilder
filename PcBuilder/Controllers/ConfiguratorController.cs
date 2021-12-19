@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PcBuilder.Interfaces;
@@ -14,13 +15,14 @@ namespace PcBuilder.Controllers
     public class ConfiguratorController : Controller
     {
         private ConfiguratorManager _configuratorManager;
-
         private readonly IRepositoryWrapper _repositoryWrapper;
+        private readonly IMapper _mapper;
 
-        public ConfiguratorController(IRepositoryWrapper repositoryWrapper, IHttpContextAccessor httpContextAccessor)
+        public ConfiguratorController(IRepositoryWrapper repositoryWrapper, IHttpContextAccessor httpContextAccessor, IMapper mapper)
         {
             _repositoryWrapper = repositoryWrapper;
-            _configuratorManager = new ConfiguratorManager(_repositoryWrapper, httpContextAccessor);
+            _mapper = mapper;
+            _configuratorManager = new ConfiguratorManager(_repositoryWrapper, httpContextAccessor, _mapper);
         }
 
         public async Task<IActionResult> Index()

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PcBuilder.Interfaces;
 using PcBuilder.Models;
@@ -13,6 +14,7 @@ namespace PcBuilder.ViewComponents
     public class ConfiguratorValidatorViewComponent : ViewComponent
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
+        private readonly IMapper _mapper;
         private ConfiguratorManager _configuratorManager;
         private List<string> _validatorMessages = new();
         private List<List<DetailedDataProduct>> detailedDataProducts = new();
@@ -29,9 +31,10 @@ namespace PcBuilder.ViewComponents
         private const string PSU = "Zasilacze";
         private const string COOLING = "Chłodzenie";
 
-        public ConfiguratorValidatorViewComponent(IRepositoryWrapper repositoryWrapper, IHttpContextAccessor httpContextAccessor)
+        public ConfiguratorValidatorViewComponent(IRepositoryWrapper repositoryWrapper, IHttpContextAccessor httpContextAccessor, IMapper mapper)
         {
-            _configuratorManager = new ConfiguratorManager(_repositoryWrapper, httpContextAccessor);
+            _mapper = mapper;
+            _configuratorManager = new ConfiguratorManager(_repositoryWrapper, httpContextAccessor, _mapper);
             _repositoryWrapper = repositoryWrapper;
         }
 
@@ -54,7 +57,7 @@ namespace PcBuilder.ViewComponents
             {
                 var detailedDataProduct = await _repositoryWrapper.RepositoryDetailedDataProduct.GetByCondition(x => x.ProductId == item.product.ProductId);
                 if (detailedDataProduct is not null)
-                    components.Add(new Component() { Product = item.product, Category = item.category, DetailedDataProduct = detailedDataProduct });
+                    components.Add(new Component() { Product = _mapper.Map<Product>(item.product), Category = item.category, DetailedDataProduct = detailedDataProduct });
             }
             List<Category> categories = _repositoryWrapper.RepositoryCategory.GetAll().Result;
             List<Category> categoriesInConfiguration = new List<Category>();
@@ -351,7 +354,7 @@ namespace PcBuilder.ViewComponents
                     categories.Add(item.category);
                 else
                 {
-                    _validatorMessages.Add($"Dodano wiecej niż jeden komponent z kategorii {item.category}, walidacja niemożliwa");
+                    _validatorMessages.Add($"Dodano wiecej niż jeden komponent z kategorii {item.category.Name}, walidacja niemożliwa");
                     return false;
                 }
             }

@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using PcBuilder.Interfaces;
 using PcBuilder.Models;
+using PcBuilder.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +15,13 @@ namespace PcBuilder.Services.Configurator
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
         private readonly IHttpContextAccessor _httpContext;
+        private readonly IMapper _mapper;
 
-        public ConfiguratorManager(IRepositoryWrapper repositoryWrapper, IHttpContextAccessor httpContext)
+        public ConfiguratorManager(IRepositoryWrapper repositoryWrapper, IHttpContextAccessor httpContext, IMapper mapper)
         {
             _repositoryWrapper = repositoryWrapper;
             _httpContext = httpContext;
+            _mapper = mapper;
         }
 
         public List<ConfiguratorPosition> GetConfiguration()
@@ -36,8 +40,6 @@ namespace PcBuilder.Services.Configurator
             {
                 throw new Exception();
             }
-            productToAdd.File = ""; // automapper here
-            productToAdd.Description = "";
 
             if (_httpContext.HttpContext.Request.Cookies.ContainsKey(Consts.Const.ConfiguratorSessionKey))
             {
@@ -101,7 +103,7 @@ namespace PcBuilder.Services.Configurator
         {
             var newCartPosition = new ConfiguratorPosition()
             {
-                product = productToAdd,
+                product = _mapper.Map<ConfigurationProductViewModel>(productToAdd),
                 category = _repositoryWrapper.RepositoryCategory.GetOneByCodition(c => c.Subcategories.Any(s => s.SubcategoryId == productToAdd.SubCategoryId)).GetAwaiter().GetResult(),
                 quantity = 1,
                 sum = productToAdd.Price

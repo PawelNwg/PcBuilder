@@ -1,4 +1,5 @@
 ﻿using PcBuilder.Models;
+using PcBuilder.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace PcBuilder.Services.Configurator
 {
     public class ConfiguratorPosition
     {
-        public Product product { get; set; }
+        public ConfigurationProductViewModel product { get; set; }
         public Category category { get; set; }
 
         public int quantity { get; set; }

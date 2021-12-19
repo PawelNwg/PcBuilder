@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PcBuilder.Interfaces;
 using PcBuilder.Services.Configurator;
@@ -13,10 +14,12 @@ namespace PcBuilder.ViewComponents
     {
         private readonly IRepositoryWrapper _repositoryWrapper;
         private ConfiguratorManager _configuratorManager;
+        private readonly IMapper _mapper;
 
-        public ConfiguratorViewComponent(IRepositoryWrapper repositoryWrapper, IHttpContextAccessor httpContextAccessor)
+        public ConfiguratorViewComponent(IRepositoryWrapper repositoryWrapper, IHttpContextAccessor httpContextAccessor, IMapper mapper)
         {
-            _configuratorManager = new ConfiguratorManager(_repositoryWrapper, httpContextAccessor);
+            _mapper = mapper;
+            _configuratorManager = new ConfiguratorManager(_repositoryWrapper, httpContextAccessor, _mapper);
             _repositoryWrapper = repositoryWrapper;
         }
 
